@@ -8,7 +8,7 @@ A specification-driven, constraint-aware fuzzing tool for blockchain RPC
 - Local Solana/Ethereum/... dev node (e.g., "http://127.0.0.1:8899" or "http://127.0.0.1:32778" or ...)
 - OpenAI API key 
 ### Setup
-```
+```python
 # Create virtual environment
 python -m venv venv
 source venv/bin/activate
@@ -24,7 +24,7 @@ export ETH_RPC="http://127.0.0.1:32778"
 ```
 
 ## Quick Start
-```
+```python
 # Execute the following code sequentially
 python3 ConstraintExtraction/llm.py
 python3 ConstraintExtraction/seed_generate.py

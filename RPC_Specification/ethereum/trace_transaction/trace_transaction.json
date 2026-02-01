@@ -1,0 +1,104 @@
+{
+  "method_name": "trace_transaction",
+  "description": "Returns all traces of given transaction(Supported on Erigon).",
+  "parameters": [
+    {
+      "name": "hash",
+      "type": "string",
+      "description": "The hash of a transaction",
+      "sub_parameters": []
+    }
+  ],
+  "returns": {
+    "array": {
+      "description": "The block traces, which have the following fields (please note that all return types are hexadecimal representations of their data type unless otherwise stated):",
+      "type": "object",
+      "fields": {}
+    },
+    "array.action": {
+      "description": "The action to be performed on the receiver id",
+      "type": "object",
+      "fields": {}
+    },
+    "array.action.from": {
+      "description": "The address of the sender",
+      "type": "object",
+      "fields": {}
+    },
+    "array.action.callType": {
+      "description": "The type of method such as call, delegatecall",
+      "type": "object",
+      "fields": {}
+    },
+    "array.action.gas": {
+      "description": "The gas provided by the sender, encoded as hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "array.action.input": {
+      "description": "The data sent along with the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "array.action.to": {
+      "description": "The address of the receiver",
+      "type": "object",
+      "fields": {}
+    },
+    "array.action.value": {
+      "description": "The integer of the value sent with this transaction, encoded as hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "array.blockHash": {
+      "description": "The hash of the block where this transaction was in",
+      "type": "object",
+      "fields": {}
+    },
+    "array.blockNumber": {
+      "description": "The block number where this transaction was in",
+      "type": "object",
+      "fields": {}
+    },
+    "array.result": {
+      "description": "The integer of the gas price used encoded as hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "array.result.gasUsed": {
+      "description": "The total used gas by all transactions in this block encoded as hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "array.result.output": {
+      "description": "The value returned by the contract call, and it only contains the actual value sent by the RETURN method. If the RETURN method was not executed, the output is empty bytes",
+      "type": "object",
+      "fields": {}
+    },
+    "array.subtraces": {
+      "description": "The traces of contract calls made by the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "array.traceAddress": {
+      "description": "The list of addresses where the call was executed, the address of the parents, and the order of the current sub call",
+      "type": "object",
+      "fields": {}
+    },
+    "array.transactionHash": {
+      "description": "The hash of the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "array.transactionPosition": {
+      "description": "The transaction position",
+      "type": "object",
+      "fields": {}
+    },
+    "array.type": {
+      "description": "The value of the method such as call or create",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "method_name": "debug_getTrieFlushInterval",
+  "description": "Retrieves the current value of in-memory trie flush interval",
+  "parameters": [],
+  "returns": {
+    "time": {
+      "description": "The current value of in-memory trie flush interval",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

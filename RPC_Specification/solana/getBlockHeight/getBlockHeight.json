@@ -1,0 +1,32 @@
+{
+  "method_name": "getBlockHeight",
+  "description": "Returns the current block height of the node",
+  "parameters": [
+    {
+      "name": "object",
+      "type": "object",
+      "description": "The configuration object with the following fields:",
+      "sub_parameters": [
+        {
+          "name": "commitment",
+          "type": "string",
+          "description": "The level of commitment required for the query. It can be one of:",
+          "sub_parameters": []
+        },
+        {
+          "name": "minContextSlot",
+          "type": "integer",
+          "description": "The minimum slot at which the request can be evaluated",
+          "sub_parameters": []
+        }
+      ]
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "The current block height encoded in u64 format",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

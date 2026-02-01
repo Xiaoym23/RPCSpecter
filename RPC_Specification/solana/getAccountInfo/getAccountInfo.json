@@ -1,0 +1,119 @@
+{
+  "method_name": "getAccountInfo",
+  "description": "Returns all information associated with the account of provided Pubkey.",
+  "parameters": [
+    {
+      "name": "address",
+      "type": "string",
+      "description": "The Pubkey of the account to query encoded as base-58 string",
+      "sub_parameters": []
+    },
+    {
+      "name": "object",
+      "type": "object",
+      "description": "The configuration object with the following fields:",
+      "sub_parameters": [
+        {
+          "name": "commitment",
+          "type": "string",
+          "description": "The level of commitment required for the query. The options include:",
+          "sub_parameters": [
+            {
+              "name": "finalized",
+              "type": "string",
+              "description": "The node will query the most recent block confirmed by the supermajority of the cluster as having reached maximum lockout, meaning the cluster has recognized this block as finalized",
+              "sub_parameters": []
+            },
+            {
+              "name": "confirmed",
+              "type": "string",
+              "description": "The node will query the most recent block that has been voted on by the supermajority of the cluster",
+              "sub_parameters": []
+            },
+            {
+              "name": "processed",
+              "type": "string",
+              "description": "The node will query its most recent block. Note that the block may not be complete",
+              "sub_parameters": []
+            }
+          ]
+        },
+        {
+          "name": "encoding",
+          "type": "string",
+          "description": "(Default: binary) The encoding format for account data. It can be one of base58 (slow), base64, binary, base64+zstd or jsonParsed",
+          "sub_parameters": []
+        },
+        {
+          "name": "dataSlice",
+          "type": "string",
+          "description": "The returned account data using the provided offset: 'usize' and length: 'usize' fields; only available for base58, base64, or base64+zstd encodings",
+          "sub_parameters": []
+        },
+        {
+          "name": "minContextSlot",
+          "type": "integer",
+          "description": "The minimum slot at which the request can be evaluated",
+          "sub_parameters": []
+        }
+      ]
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "Null if the account doesn't exist otherwise RpcResponse JSON object with the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.context": {
+      "description": "An object that contains metadata about the current state of the Solana network at the time the request was processed",
+      "type": "object",
+      "fields": {}
+    },
+    "result.context.apiVersion": {
+      "description": "The version number",
+      "type": "object",
+      "fields": {}
+    },
+    "result.context.slot": {
+      "description": "The current slot in the Solana cluster during which the transactions are processed and new blocks are added to the blockchain",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value": {
+      "description": "An object that contains information about the requested account",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.lamports": {
+      "description": "The number of lamports assigned to this account as u64 (64-bit unsigned integer)",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.owner": {
+      "description": "The base-58 encoded Pubkey of the program this account has been assigned to",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.data": {
+      "description": "Data associated with the account. Format depends on encoding parameter:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.executable": {
+      "description": "A boolean indicating if the account contains a program (and is strictly read-only)",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.rentEpoch": {
+      "description": "The epoch at which this account will next owe rent, as u64 (64-bit unsigned integer)",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.space": {
+      "description": "The amount of storage space required to store the token account",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "method_name": "getEpochSchedule",
+  "description": "Returns epoch schedule information from this cluster's genesis config.",
+  "parameters": [],
+  "returns": {
+    "result": {
+      "description": "An object with the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.firstNormalEpoch": {
+      "description": "The first normal-length epoch, log2(slotsPerEpoch) - log2(MINIMUM_SLOTS_PER_EPOCH)",
+      "type": "object",
+      "fields": {}
+    },
+    "result.firstNormalSlot": {
+      "description": "The slot number of the first normal slot. MINIMUM_SLOTS_PER_EPOCH * (2.pow(firstNormalEpoch) - 1)",
+      "type": "object",
+      "fields": {}
+    },
+    "result.leaderScheduleSlotOffset": {
+      "description": "The number of slots before beginning of an epoch to calculate a leader schedule for that epoch",
+      "type": "object",
+      "fields": {}
+    },
+    "result.slotsPerEpoch": {
+      "description": "The maximum number of slots in each epoch",
+      "type": "object",
+      "fields": {}
+    },
+    "result.warmup": {
+      "description": "Whether epochs start short and grow",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

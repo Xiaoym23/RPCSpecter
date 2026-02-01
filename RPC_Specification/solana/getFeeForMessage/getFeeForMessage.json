@@ -1,0 +1,58 @@
+{
+  "method_name": "getFeeForMessage",
+  "description": "Get the fee the network will charge for a particular message.",
+  "parameters": [
+    {
+      "name": "message",
+      "type": "string",
+      "description": "The transaction message encoded as base64",
+      "sub_parameters": []
+    },
+    {
+      "name": "object",
+      "type": "object",
+      "description": "The configuration object with the following fields:",
+      "sub_parameters": [
+        {
+          "name": "commitment",
+          "type": "string",
+          "description": "The level of commitment required for the query. The options include:",
+          "sub_parameters": []
+        },
+        {
+          "name": "maxSupportedTransactionVersion",
+          "type": "number",
+          "description": "The maximum supported transaction version to return in responses. If the requested block contains a transaction with a higher version, an error will be returned. If this parameter is omitted, only legacy transactions will be returned, and a block containing any versioned transaction will prompt an error",
+          "sub_parameters": []
+        }
+      ]
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "Null if the transaction message is not found otherwise RpcResponse JSON object with the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.context": {
+      "description": "The information about the current state of the program",
+      "type": "object",
+      "fields": {}
+    },
+    "result.context.apiVersion": {
+      "description": "The version of the Solana RPC API to use",
+      "type": "object",
+      "fields": {}
+    },
+    "result.context.slot": {
+      "description": "An integer representing the slot for which to retrieve the fee calculator",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value": {
+      "description": "(u64 | null) The fee corresponding to the message at the specified blockhash",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

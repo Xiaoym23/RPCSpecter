@@ -1,0 +1,91 @@
+{
+  "method_name": "getBlockProduction",
+  "description": "Returns recent block production information from the current or previous epoch.",
+  "parameters": [
+    {
+      "name": "object",
+      "type": "object",
+      "description": "The configuration object with the following fields:",
+      "sub_parameters": [
+        {
+          "name": "commitment",
+          "type": "string",
+          "description": "The level of commitment required for the query. The options include:",
+          "sub_parameters": []
+        },
+        {
+          "name": "range",
+          "type": "array",
+          "description": "The slot range to return block production for. If parameter is not provided, the default value is current epoch",
+          "sub_parameters": [
+            {
+              "name": "firstSlot",
+              "type": "string",
+              "description": "The first slot to return block production information for (inclusive)",
+              "sub_parameters": []
+            },
+            {
+              "name": "lastSlot",
+              "type": "string",
+              "description": "The last slot to return block production information for (inclusive). If the parameter is not provided, the default value is highest slot",
+              "sub_parameters": []
+            }
+          ]
+        },
+        {
+          "name": "identity",
+          "type": "string",
+          "description": "The results for this validator identity encoded in base-58",
+          "sub_parameters": []
+        }
+      ]
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "The custom object with the following field",
+      "type": "object",
+      "fields": {}
+    },
+    "result.context": {
+      "description": "The additional context to retrieve the block production information",
+      "type": "object",
+      "fields": {}
+    },
+    "result.context.apiVersion": {
+      "description": "The API version",
+      "type": "object",
+      "fields": {}
+    },
+    "result.context.slot": {
+      "description": "The slot number to retrieve block production information",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value": {
+      "description": "Information about the block production in the specified slot range",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.byIdentity": {
+      "description": "A dictionary of validator identities, as base-58 encoded strings. Value is a two element array containing the number of leader slots and the number of blocks produced",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.range": {
+      "description": "The block production slot range",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.range.firstSlot": {
+      "description": "The first slot of the block production information (inclusive)",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.range.lastSlot": {
+      "description": "The last slot of the block production information (inclusive)",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

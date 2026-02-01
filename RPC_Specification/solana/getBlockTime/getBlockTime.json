@@ -1,0 +1,29 @@
+{
+  "method_name": "getBlockTime",
+  "description": "Returns the estimated production time of a block.",
+  "parameters": [
+    {
+      "name": "u64",
+      "type": "integer",
+      "description": "The block number, identified by Slot",
+      "sub_parameters": []
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "The response can be either of one value:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.i64": {
+      "description": "The estimated production time, as Unix timestamp (seconds since the Unix epoch)",
+      "type": "object",
+      "fields": {}
+    },
+    "result.null": {
+      "description": "If timestamp is not available for the block",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

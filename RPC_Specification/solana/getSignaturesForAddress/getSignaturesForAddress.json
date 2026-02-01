@@ -1,0 +1,86 @@
+{
+  "method_name": "getSignaturesForAddress",
+  "description": "Returns confirmed signatures for transactions involving an address backwards in time from the provided signature or most recent confirmed block.",
+  "parameters": [
+    {
+      "name": "account_address",
+      "type": "string",
+      "description": "The account address encoded as base-58 string",
+      "sub_parameters": []
+    },
+    {
+      "name": "object",
+      "type": "object",
+      "description": "(Optional) The configuration object with the following fields:",
+      "sub_parameters": [
+        {
+          "name": "limit",
+          "type": "integer",
+          "description": "The maximum number of transaction signatures to return (between 1 and 1000). The default value is 1000",
+          "sub_parameters": []
+        },
+        {
+          "name": "before",
+          "type": "string",
+          "description": "Start searching backward from this transaction signature. If not provided, the search starts from the top of the highest max confirmed block",
+          "sub_parameters": []
+        },
+        {
+          "name": "until",
+          "type": "string",
+          "description": "Searches until this transaction signature, if found before limit reached",
+          "sub_parameters": []
+        },
+        {
+          "name": "commitment",
+          "type": "string",
+          "description": "The level of commitment required for the query. The options include:",
+          "sub_parameters": []
+        },
+        {
+          "name": "minContextSlot",
+          "type": "integer",
+          "description": "The minimum slot at which the request can be evaluated",
+          "sub_parameters": []
+        }
+      ]
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "A JSON object with the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.blockTime": {
+      "description": "The estimated production time, as Unix timestamp (seconds since the Unix epoch). Null if not available",
+      "type": "object",
+      "fields": {}
+    },
+    "result.confirmationStatus": {
+      "description": "The transaction's cluster confirmation status. The status can either be processed, confirmed, or finalized",
+      "type": "object",
+      "fields": {}
+    },
+    "result.err": {
+      "description": "Error code if the transaction failed or null if the transaction succeeds",
+      "type": "object",
+      "fields": {}
+    },
+    "result.memo": {
+      "description": "The memo associated with the transaction and null if no memo is present",
+      "type": "object",
+      "fields": {}
+    },
+    "result.signature": {
+      "description": "The base58-encoded signature of the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "result.slot": {
+      "description": "The slot number in which the transaction was confirmed",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

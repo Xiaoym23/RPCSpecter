@@ -1,0 +1,25 @@
+{
+  "method_name": "getSlotLeaders",
+  "description": "Returns the slot leaders for a given slot range.",
+  "parameters": [
+    {
+      "name": "start_slot",
+      "type": "string",
+      "description": "The start slot encoded as u64, 64-bit unsigned integer",
+      "sub_parameters": []
+    },
+    {
+      "name": "limit",
+      "type": "string",
+      "description": "The limit encoded as u64, 64-bit unsigned integer",
+      "sub_parameters": []
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "The slot leaders for the specified slot range",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

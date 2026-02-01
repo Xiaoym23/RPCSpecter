@@ -1,0 +1,215 @@
+{
+  "method_name": "getParsedTransaction",
+  "description": "Returns transaction details for a confirmed transaction",
+  "parameters": [
+    {
+      "name": "slot",
+      "type": "integer",
+      "description": "The slot number of the block to retrieve encoded as u64 (64-bit unsigned integer) integer",
+      "sub_parameters": []
+    },
+    {
+      "name": "object",
+      "type": "array",
+      "description": "The configuration object with the following fields:",
+      "sub_parameters": [
+        {
+          "name": "encoding",
+          "type": "string",
+          "description": "The encoding format for account data. It can be jsonParsed or n/a if using JS getParsedTransaction",
+          "sub_parameters": []
+        },
+        {
+          "name": "commitment",
+          "type": "string",
+          "description": "The level of commitment required for the query. The options include:",
+          "sub_parameters": [
+            {
+              "name": "finalized",
+              "type": "string",
+              "description": "The node will query the most recent block confirmed by the supermajority of the cluster as having reached maximum lockout, meaning the cluster has recognized this block as finalized",
+              "sub_parameters": []
+            },
+            {
+              "name": "confirmed",
+              "type": "string",
+              "description": "The node will query the most recent block that has been voted on by supermajority of the cluster",
+              "sub_parameters": []
+            },
+            {
+              "name": "processed",
+              "type": "string",
+              "description": "It is not supported for this method",
+              "sub_parameters": []
+            }
+          ]
+        },
+        {
+          "name": "maxSupportedTransactionVersion",
+          "type": "boolean",
+          "description": "The maximum transaction version to return in responses. If the requested block contains a transaction with a higher version, an error will be returned. If this parameter is omitted, only legacy transactions will be returned, and a block containing any versioned transaction will prompt an error",
+          "sub_parameters": []
+        },
+        {
+          "name": "legacy",
+          "type": "boolean",
+          "description": "The older transaction format with no additional benefit",
+          "sub_parameters": []
+        },
+        {
+          "name": "0",
+          "type": "boolean",
+          "description": "The additional support for Address Lookup Tables",
+          "sub_parameters": []
+        }
+      ]
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "The result will be null if the specified transaction is not confirmed otherwise an object with the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.slot": {
+      "description": "The slot number in which the transaction was processed",
+      "type": "object",
+      "fields": {}
+    },
+    "result.parsedTransaction": {
+      "description": "The parsed transaction object with the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.parsedTransaction.signatures": {
+      "description": "An array of signatures on the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "result.parsedTransaction.parsedMessage": {
+      "description": "The parsed message of the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "result.parsedTransaction.parsedMessage.accountKeys": {
+      "description": "An array of public keys involved in the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "result.parsedTransaction.parsedMessage.instructions": {
+      "description": "An array of instructions that were executed in the block's transactions",
+      "type": "object",
+      "fields": {}
+    },
+    "result.parsedTransaction.parsedMessage.recentBlockhash": {
+      "description": "The recent blockhash from the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "result.parsedTransaction.parsedMessage.addressTableLookups": {
+      "description": "An array of address lookups that were performed during the execution of transactions in the block",
+      "type": "object",
+      "fields": {}
+    },
+    "result.blockTime": {
+      "description": "The estimated production time, as Unix timestamp (seconds since the Unix epoch). It's null if not available",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta": {
+      "description": "The transaction status metadata object with the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.err": {
+      "description": "Error code if the transaction failed or null if the transaction succeeds",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.fee": {
+      "description": "The total fees paid by all transactions in the block encoded as u64 integer",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.preBalances": {
+      "description": "An array of lamport balances for each account in the block before the transactions were processed",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.postBalances": {
+      "description": "An array of lamport balances for each account in the block after the transactions were processed",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.parsedInnerInstructions": {
+      "description": "List of inner instructions or omitted if inner instruction recording was not yet enabled during this transaction.",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.preTokenBalances": {
+      "description": "An array of token balances for each token account in the block before the transactions were processed (omitted if inner instruction recording is not enabled)",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.postTokenBalances": {
+      "description": "An array of token balances for each token account in the block after the transactions were processed (omitted if inner instruction recording is not enabled)",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.logMessages": {
+      "description": "An array of strings containing any log messages generated by the block's transactions (omitted if inner instruction recording is not enabled)",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.rewards": {
+      "description": "An object containing information about the rewards earned by the block's validators (only present if the rewards are requested). It has the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.rewards.pubkey": {
+      "description": "The public key of the account that received the award encoded as base-58 string",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.rewards.lamports": {
+      "description": "The number of reward lamports credited or debited by the account",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.rewards.postBalance": {
+      "description": "The account balance in lamports after the reward was applied",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.rewards.rewardType": {
+      "description": "The type of reward. It could be fee, rent, voting, staking",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.rewards.commission": {
+      "description": "The vote account commission when the reward was credited, only present for voting and staking rewards",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.loadedAddresses": {
+      "description": "The list of loaded addresses objects",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.loadedAddresses.readonly": {
+      "description": "The ordered list of base-58 encoded addresses for readonly loaded accounts",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.loadedAddresses.writable": {
+      "description": "The ordered list of base-58 encoded addresses for writable loaded accounts",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.version": {
+      "description": "The transaction version. It's undefined if maxSupportedTransactionVersion is not set in the requested parameters",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

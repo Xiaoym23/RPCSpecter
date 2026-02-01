@@ -1,0 +1,76 @@
+{
+  "method_name": "eth_getProof",
+  "description": "Returns the account and storage values of the specified account including the Merkle-proof.",
+  "parameters": [
+    {
+      "name": "address",
+      "type": "string",
+      "description": "The address of the account for which the balance is to be checked",
+      "sub_parameters": []
+    },
+    {
+      "name": "storageKeys",
+      "type": "array[strings]",
+      "description": "An array of storage-keys that should be proofed and included",
+      "sub_parameters": []
+    },
+    {
+      "name": "blockNumber",
+      "type": "string",
+      "description": "The block number as a string in hexadecimal format or tags. The supported tag values include earliest for the earliest/genesis block, latest for the latest mined block, pending for the pending state/transactions, safe for the most recent secure block, and finalized for the most recent secure block accepted by more than 2/3 of validators. safe and finalized are only supported on Ethereum, Gnosis, Arbitrum, Arbitrum Nova, and Avalanche C-chain",
+      "sub_parameters": []
+    }
+  ],
+  "returns": {
+    "address": {
+      "description": "The address associated with the account",
+      "type": "object",
+      "fields": {}
+    },
+    "accountProof": {
+      "description": "An array of rlp-serialized MerkleTree-Nodes which starts with the stateRoot-Node and follows the path of the SHA3 address as key",
+      "type": "object",
+      "fields": {}
+    },
+    "balance": {
+      "description": "The current balance of the account in wei",
+      "type": "object",
+      "fields": {}
+    },
+    "codeHash": {
+      "description": "A 32 byte hash of the code of the account",
+      "type": "object",
+      "fields": {}
+    },
+    "nonce": {
+      "description": "The hash of the generated proof-of-work. Null if pending",
+      "type": "object",
+      "fields": {}
+    },
+    "storageHash": {
+      "description": "A 32 byte SHA3 of the storageRoot. All storage will deliver a MerkleProof starting with this rootHash",
+      "type": "object",
+      "fields": {}
+    },
+    "storageProof": {
+      "description": "An array of storage-entries as requested. Each entry is an object with the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "storageProof.key": {
+      "description": "The requested storage key",
+      "type": "object",
+      "fields": {}
+    },
+    "storageProof.value": {
+      "description": "The storage value",
+      "type": "object",
+      "fields": {}
+    },
+    "storageProof.proof": {
+      "description": "An array of rlp-serialized MerkleTree-Nodes which starts with the stateRoot-Node and follows the path of the SHA3 address as key",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

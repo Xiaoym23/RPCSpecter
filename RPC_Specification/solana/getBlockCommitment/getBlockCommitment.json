@@ -1,0 +1,39 @@
+{
+  "method_name": "getBlockCommitment",
+  "description": "Returns commitment for particular block.",
+  "parameters": [
+    {
+      "name": "block number",
+      "type": "integer",
+      "description": "The block number identified by the slot",
+      "sub_parameters": []
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "The custom object with the following field",
+      "type": "object",
+      "fields": {}
+    },
+    "result.commitment": {
+      "description": "The commitment values for the block. It could be either:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.commitment.null": {
+      "description": "Null if the block is unknown",
+      "type": "object",
+      "fields": {}
+    },
+    "result.commitment.array": {
+      "description": "An array of u64 integers logging the amount of cluster stake in lamports that has voted on the block at each depth from 0 to MAX_LOCKOUT_HISTORY + 1",
+      "type": "object",
+      "fields": {}
+    },
+    "result.totalStake": {
+      "description": "The total number of lamports being used by validators to participate in the block production and voting process",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

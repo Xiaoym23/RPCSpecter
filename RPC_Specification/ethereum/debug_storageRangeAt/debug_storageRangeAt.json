@@ -1,0 +1,63 @@
+{
+  "method_name": "debug_storageRangeAt",
+  "description": "Returns the contract storage for the specified range.",
+  "parameters": [
+    {
+      "name": "blockReference",
+      "type": "string",
+      "description": "The block hash in string format or block number as hexadecimal in the object format",
+      "sub_parameters": []
+    },
+    {
+      "name": "txIndex",
+      "type": "integer",
+      "description": "The transaction index for the point in which we want the list of accounts",
+      "sub_parameters": []
+    },
+    {
+      "name": "address",
+      "type": "string",
+      "description": "The contract address",
+      "sub_parameters": []
+    },
+    {
+      "name": "startKey",
+      "type": "string",
+      "description": "The offset (hash of storage key)",
+      "sub_parameters": []
+    },
+    {
+      "name": "limit",
+      "type": "string",
+      "description": "The number of storage entries to return",
+      "sub_parameters": []
+    }
+  ],
+  "returns": {
+    "storage": {
+      "description": "An object with hash values, and for each of them the key and value it represents",
+      "type": "object",
+      "fields": {}
+    },
+    "storage.hash": {
+      "description": "The hash value",
+      "type": "object",
+      "fields": {}
+    },
+    "storage.hash.key": {
+      "description": "The key associated with the hash",
+      "type": "object",
+      "fields": {}
+    },
+    "storage.hash.value": {
+      "description": "The value associated with the hash",
+      "type": "object",
+      "fields": {}
+    },
+    "nextKey": {
+      "description": "The hash of next key if further storage in range. Otherwise, not included",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "method_name": "eth_getRawTransactionByHash",
+  "description": "Returns the raw transaction data for a transaction hash.",
+  "parameters": [
+    {
+      "name": "hash",
+      "type": "string",
+      "description": "The hash of a transaction",
+      "sub_parameters": []
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "The raw transaction data as a hex string, or null if no transaction is found.",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

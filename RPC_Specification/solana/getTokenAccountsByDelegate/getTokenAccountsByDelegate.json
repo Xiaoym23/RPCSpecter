@@ -1,0 +1,223 @@
+{
+  "method_name": "getTokenAccountsByDelegate",
+  "description": "Returns all SPL Token accounts by approved Delegate.",
+  "parameters": [
+    {
+      "name": "pubkey",
+      "type": "string",
+      "description": "The Pubkey of account delegate to query encoded as base-58 string",
+      "sub_parameters": []
+    },
+    {
+      "name": "object",
+      "type": "object",
+      "description": "The JSON object with the following fields:",
+      "sub_parameters": [
+        {
+          "name": "mint",
+          "type": "string",
+          "description": "The Pubkey of the specific token Mint to limit accounts to, as base-58 encoded string",
+          "sub_parameters": []
+        },
+        {
+          "name": "programId",
+          "type": "string",
+          "description": "The Pubkey of the Token program ID that owns the accounts, as base-58 encoded string",
+          "sub_parameters": []
+        }
+      ]
+    },
+    {
+      "name": "object",
+      "type": "object",
+      "description": "The JSON object with the following fields:",
+      "sub_parameters": [
+        {
+          "name": "commitment",
+          "type": "string",
+          "description": "The level of commitment required for the query. The options include:",
+          "sub_parameters": [
+            {
+              "name": "finalized",
+              "type": "string",
+              "description": "The node will query the most recent block confirmed by the supermajority of the cluster as having reached maximum lockout, meaning the cluster has recognized this block as finalized",
+              "sub_parameters": []
+            },
+            {
+              "name": "confirmed",
+              "type": "string",
+              "description": "The node will query the most recent block that has been voted on by the supermajority of the cluster",
+              "sub_parameters": []
+            },
+            {
+              "name": "processed",
+              "type": "string",
+              "description": "The node will query its most recent block. Note that the block may not be complete",
+              "sub_parameters": []
+            }
+          ]
+        },
+        {
+          "name": "encoding",
+          "type": "string",
+          "description": "(Default: binary) The encoding format for account data. It can be one of base58 (slow), base64, binary, base64+zstd or jsonParsed",
+          "sub_parameters": []
+        },
+        {
+          "name": "dataSlice",
+          "type": "string",
+          "description": "The returned account data using the provided offset: 'usize' and length: 'usize' fields; only available for base58, base64, or base64+zstd encodings",
+          "sub_parameters": []
+        },
+        {
+          "name": "minContextSlot",
+          "type": "integer",
+          "description": "The minimum slot at which the request can be evaluated",
+          "sub_parameters": []
+        }
+      ]
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "An object with the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.context": {
+      "description": "The information about the current state of the program",
+      "type": "object",
+      "fields": {}
+    },
+    "result.context.apiVersion": {
+      "description": "The version of the Solana RPC API to use",
+      "type": "object",
+      "fields": {}
+    },
+    "result.context.slot": {
+      "description": "An integer representing the slot for which to retrieve the fee calculator",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value": {
+      "description": "A JSON object with the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.account": {
+      "description": "An address on the Solana blockchain that is used to store assets",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.account.data": {
+      "description": "Token state data associated with the account. Format depends on encoding parameter:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.account.data.program": {
+      "description": "The program that manages the token",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.account.data.parsed": {
+      "description": "An array of parsed instructions that were executed in the block's transactions",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.account.data.parsed.info": {
+      "description": "An array of information objects that provide additional details about the transactions in the block",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.account.data.parsed.info.tokenAmount": {
+      "description": "The balance of the token in the token account",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.account.data.parsed.info.tokenAmount.amount": {
+      "description": "The raw total token supply without decimals, a string representation of a u64 integer",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.account.data.parsed.info.tokenAmount.decimals": {
+      "description": "An integer value representing the number of decimal places used by the token",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.account.data.parsed.info.tokenAmount.uiAmount": {
+      "description": "The total token supply using mint-prescribed decimals (DEPRECATED)",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.account.data.parsed.info.tokenAmount.uiAmountString": {
+      "description": "The total token supply as a string using mint-prescribed decimals",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.account.data.parsed.info.delegate": {
+      "description": "The public address of the delegate from which the account tokens are to be retrieved encoded as base-58 string",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.account.data.parsed.info.delegateAmount": {
+      "description": "The configuration object with the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.account.data.parsed.info.delegateAmount.amount": {
+      "description": "The raw total token supply without decimals, a string representation of a u64 integer",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.account.data.parsed.info.delegateAmount.decimals": {
+      "description": "An integer value representing the number of decimal places used by the token",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.account.data.parsed.info.delegateAmount.uiAmount": {
+      "description": "The total token supply using mint-prescribed decimals (DEPRECATED)",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.account.data.parsed.info.delegateAmount.uiAmountString": {
+      "description": "The total token supply as a string using mint-prescribed decimals",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.account.data.parsed.info.isNative": {
+      "description": "A boolean value indicating whether the token is a native token of the Solana blockchain",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.account.data.parsed.info.mint": {
+      "description": "Provides information about the creation of new tokens",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.account.data.parsed.info.owner": {
+      "description": "The base-58 encoded Pubkey of the program this account has been assigned to",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.account.data.parsed.info.state": {
+      "description": "The current state of the token account",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.account.data.parsed.type": {
+      "description": "The type of the block. It can be used to differentiate between regular blocks and special blocks such as snapshot or transaction confirmation blocks",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.account.data.space": {
+      "description": "The amount of storage space required to store the token account",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.pubkey": {
+      "description": "The public key associated with the token account",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

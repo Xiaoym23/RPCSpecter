@@ -1,0 +1,66 @@
+{
+  "method_name": "getSupply",
+  "description": "Returns information about the current supply.",
+  "parameters": [
+    {
+      "name": "object",
+      "type": "object",
+      "description": "The configuration object with the following fields:",
+      "sub_parameters": [
+        {
+          "name": "commitment",
+          "type": "string",
+          "description": "The level of commitment required for the query. The options include:",
+          "sub_parameters": []
+        }
+      ]
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "An object with the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.context": {
+      "description": "The information about the current state of the program",
+      "type": "object",
+      "fields": {}
+    },
+    "result.context.apiVersion": {
+      "description": "The version of the Solana RPC API to use",
+      "type": "object",
+      "fields": {}
+    },
+    "result.context.slot": {
+      "description": "An integer representing the slot for which to retrieve the fee calculator",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value": {
+      "description": "A JSON object with the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.circulating": {
+      "description": "The total circulating supply of SOL tokens, encoded as u64 integer",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.nonCirculating": {
+      "description": "The total non-circulating supply of SOL tokens, encoded as u64 integer",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.nonCirculatingAccounts": {
+      "description": "An array containing the public keys (addresses) of accounts holding non-circulating tokens",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.total": {
+      "description": "The total amount of SOL tokens",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "method_name": "eth_submitWork",
+  "description": "Used for submitting a proof-of-work solution.",
+  "parameters": [
+    {
+      "name": "nonce",
+      "type": "string",
+      "description": "The nonce found",
+      "sub_parameters": []
+    },
+    {
+      "name": "hash",
+      "type": "string",
+      "description": "The header's pow-hash",
+      "sub_parameters": []
+    },
+    {
+      "name": "digest",
+      "type": "string",
+      "description": "The mix digest",
+      "sub_parameters": []
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "It returns true if the provided solution is valid otherwise false",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

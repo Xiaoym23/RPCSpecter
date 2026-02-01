@@ -1,0 +1,12 @@
+{
+  "method_name": "eth_newBlockFilter",
+  "description": "Creates a filter in the node, to notify when a new block arrives. To check if the state has changed, call eth_getFilterChanges.",
+  "parameters": [],
+  "returns": {
+    "result": {
+      "description": "It returns a filter id to be used when calling eth_getFilterChanges",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

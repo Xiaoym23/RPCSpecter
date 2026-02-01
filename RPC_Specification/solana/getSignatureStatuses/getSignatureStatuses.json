@@ -1,0 +1,77 @@
+{
+  "method_name": "getSignatureStatuses",
+  "description": "Returns the statuses of a list of signatures. Unless the searchTransactionHistory configuration parameter is included, this method only searches the recent status cache of signatures, which retains statuses for all active slots plus MAX_RECENT_BLOCKHASHES rooted slots.",
+  "parameters": [
+    {
+      "name": "tx signatures",
+      "type": "string",
+      "description": "An array of transaction signatures to confirm encoded as base-58 strings",
+      "sub_parameters": []
+    },
+    {
+      "name": "object",
+      "type": "object",
+      "description": "The configuration object with the following fields:",
+      "sub_parameters": [
+        {
+          "name": "searchTransactionHistory",
+          "type": "boolean",
+          "description": "(default: false) If true, the search includes the entire transaction history. If false, the search only includes recent transactions in the latest confirmed block",
+          "sub_parameters": []
+        }
+      ]
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "An object with the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.context": {
+      "description": "The information about the current state of the program",
+      "type": "object",
+      "fields": {}
+    },
+    "result.context.apiVersion": {
+      "description": "The version of the Solana RPC API to use",
+      "type": "object",
+      "fields": {}
+    },
+    "result.context.slot": {
+      "description": "An integer representing the slot for which to retrieve the fee calculator",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value": {
+      "description": "A JSON object with the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.confirmationStatus": {
+      "description": "The transaction's cluster confirmation status. It can either be processed, confirmed, or finalized",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.confirmations": {
+      "description": "The number of confirmations a transaction has received. If the transaction is finalized (i.e., confirmed at the highest level of commitment), the value will be null",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.err": {
+      "description": "Error code if the transaction failed or null if the transaction succeeds",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.slot": {
+      "description": "The slot number in which the transaction was confirmed",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.status": {
+      "description": "The processing status of the transaction. It returns Ok if the transaction was successful and Err if the transaction failed with TransactionError",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

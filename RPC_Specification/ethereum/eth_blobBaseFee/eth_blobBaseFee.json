@@ -1,0 +1,12 @@
+{
+  "method_name": "eth_blobBaseFee",
+  "description": "Returns the expected base fee for blobs in the next block.",
+  "parameters": [],
+  "returns": {
+    "result": {
+      "description": "The expected base fee in wei, represented in hexadecimal format",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

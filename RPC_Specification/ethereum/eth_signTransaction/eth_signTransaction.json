@@ -1,0 +1,62 @@
+{
+  "method_name": "eth_signTransaction",
+  "description": "Signs a transaction that can be submitted to the network later using eth_sendRawTransaction - not supported by Quicknode!",
+  "parameters": [
+    {
+      "name": "object",
+      "type": "array",
+      "description": "The transaction response object which contains the following fields:",
+      "sub_parameters": [
+        {
+          "name": "from",
+          "type": "",
+          "description": "The address the transaction is sent from",
+          "sub_parameters": []
+        },
+        {
+          "name": "to",
+          "type": "",
+          "description": "(optional for contract creation) The address the transaction is directed to",
+          "sub_parameters": []
+        },
+        {
+          "name": "gas",
+          "type": "",
+          "description": "(default: 90000) The integer of the gas provided for the transaction execution",
+          "sub_parameters": []
+        },
+        {
+          "name": "gasPrice",
+          "type": "",
+          "description": "The integer of the gasPrice used for each paid gas, in wei",
+          "sub_parameters": []
+        },
+        {
+          "name": "value",
+          "type": "",
+          "description": "The integer of the value sent with this transaction, in wei",
+          "sub_parameters": []
+        },
+        {
+          "name": "data",
+          "type": "",
+          "description": "The compiled code of a contract or the hash of the invoked method signature and encoded parameters",
+          "sub_parameters": []
+        },
+        {
+          "name": "nonce",
+          "type": "",
+          "description": "The integer of a nonce. This allows overwriting the own pending transactions that use the same nonce",
+          "sub_parameters": []
+        }
+      ]
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "The signed transaction object",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

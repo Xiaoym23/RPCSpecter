@@ -1,0 +1,12 @@
+{
+  "method_name": "net_listening",
+  "description": "Returns true if client is actively listening for network connections.",
+  "parameters": [],
+  "returns": {
+    "result": {
+      "description": "It's true when the client is actively listening for network connections, otherwise false",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

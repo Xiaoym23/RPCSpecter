@@ -1,0 +1,190 @@
+{
+  "method_name": "simulateTransaction",
+  "description": "Simulate sending a transaction.",
+  "parameters": [
+    {
+      "name": "transaction",
+      "type": "string",
+      "description": "The transaction as an encoded string. The transaction must have a valid blockhash, but is not required to be signed",
+      "sub_parameters": []
+    },
+    {
+      "name": "object",
+      "type": "object",
+      "description": "The configuration object with the following fields:",
+      "sub_parameters": [
+        {
+          "name": "commitment",
+          "type": "string",
+          "description": "(default: finalized) The level of commitment required for the query. The options include:",
+          "sub_parameters": [
+            {
+              "name": "finalized",
+              "type": "string",
+              "description": "The node will query the most recent block confirmed by the supermajority of the cluster as having reached maximum lockout, meaning the cluster has recognized this block as finalized",
+              "sub_parameters": []
+            },
+            {
+              "name": "confirmed",
+              "type": "string",
+              "description": "The node will query the most recent block that has been voted on by the supermajority of the cluster",
+              "sub_parameters": []
+            },
+            {
+              "name": "processed",
+              "type": "string",
+              "description": "The node will query its most recent block. Note that the block may not be complete",
+              "sub_parameters": []
+            }
+          ]
+        },
+        {
+          "name": "sigVerify",
+          "type": "boolean",
+          "description": "(default: false) If true, the transaction signatures will be verified (conflicts with replaceRecentBlockhash)",
+          "sub_parameters": []
+        },
+        {
+          "name": "replaceRecentBlockhash",
+          "type": "boolean",
+          "description": "(default: false) If true, the transaction recent blockhash will be replaced with the most recent blockhash (conflicts with sigVerify)",
+          "sub_parameters": []
+        },
+        {
+          "name": "encoding",
+          "type": "string",
+          "description": "(default: base58) The encoding format for account data. It can be either base58 (slow, DEPRECATED) or base64",
+          "sub_parameters": []
+        },
+        {
+          "name": "minContextSlot",
+          "type": "integer",
+          "description": "The minimum slot at which the request can be evaluated",
+          "sub_parameters": []
+        },
+        {
+          "name": "innerInstructions",
+          "type": "boolean",
+          "description": "(default: false) If true the response will include inner instructions. These inner instructions will be jsonParsed where possible, otherwise json.",
+          "sub_parameters": []
+        },
+        {
+          "name": "accounts",
+          "type": "object",
+          "description": "The accounts configuration object containing the following fields:",
+          "sub_parameters": [
+            {
+              "name": "addresses",
+              "type": "string",
+              "description": "An array of accounts to return, as base-58 encoded strings",
+              "sub_parameters": []
+            },
+            {
+              "name": "encoding",
+              "type": "string",
+              "description": "(Default: base58 for input) The encoding format for account data. It can be one of base58 (slow), base64, base64+zstd or jsonParsed",
+              "sub_parameters": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "Null if the account doesn't exist otherwise RpcResponse JSON object with the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.context": {
+      "description": "An object that contains metadata about the current state of the Solana network at the time the request was processed",
+      "type": "object",
+      "fields": {}
+    },
+    "result.context.apiVersion": {
+      "description": "The version number",
+      "type": "object",
+      "fields": {}
+    },
+    "result.context.slot": {
+      "description": "The current slot in the Solana cluster during which the transactions are processed and new blocks are added to the blockchain",
+      "type": "object",
+      "fields": {}
+    },
+    "result.err": {
+      "description": "Error code if the transaction failed or null if the transaction succeeds",
+      "type": "object",
+      "fields": {}
+    },
+    "result.logs": {
+      "description": "An array of log messages the transaction instructions output during execution, null if simulation failed before the transaction was able to execute (for example due to an invalid blockhash or signature verification failure)",
+      "type": "object",
+      "fields": {}
+    },
+    "result.accounts": {
+      "description": "An array of accounts with the same length as the accounts.addresses array in the request",
+      "type": "object",
+      "fields": {}
+    },
+    "result.accounts.null": {
+      "description": "If the account doesn't exist or if err is not null",
+      "type": "object",
+      "fields": {}
+    },
+    "result.accounts.object": {
+      "description": "otherwise, a JSON object containing:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.accounts.object.lamports": {
+      "description": "The number of lamports assigned to this account as u64 (64-bit unsigned integer)",
+      "type": "object",
+      "fields": {}
+    },
+    "result.accounts.object.owner": {
+      "description": "The base-58 encoded Pubkey of the program this account has been assigned to",
+      "type": "object",
+      "fields": {}
+    },
+    "result.accounts.object.data": {
+      "description": "The data associated with the account, either as encoded binary data or JSON format {'program': 'state'}, depending on encoding parameter",
+      "type": "object",
+      "fields": {}
+    },
+    "result.accounts.object.executable": {
+      "description": "A boolean indicating if the account contains a program (and is strictly read-only)",
+      "type": "object",
+      "fields": {}
+    },
+    "result.accounts.object.rentEpoch": {
+      "description": "The epoch at which this account will next owe rent, as u64 (64-bit unsigned integer)",
+      "type": "object",
+      "fields": {}
+    },
+    "result.unitsConsumed": {
+      "description": "The number of compute budget units consumed during the processing of this transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "result.returnData": {
+      "description": "The most-recent return data generated by an instruction in the transaction, with the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.returnData.programId": {
+      "description": "The program that generated the return data, as base-58 encoded Pubkey",
+      "type": "object",
+      "fields": {}
+    },
+    "result.returnData.data": {
+      "description": "The return data itself, as base-64 encoded binary data",
+      "type": "object",
+      "fields": {}
+    },
+    "result.innerInstructions": {
+      "description": "The value is a list of inner instructions.",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

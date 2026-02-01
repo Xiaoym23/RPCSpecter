@@ -1,0 +1,64 @@
+{
+  "method_name": "eth_getFilterLogs",
+  "description": "Returns an array of all logs matching filter with given id.",
+  "parameters": [
+    {
+      "name": "id",
+      "type": "string",
+      "description": "The filter ID",
+      "sub_parameters": []
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "An array of log objects, or an empty array if nothing has changed since last poll",
+      "type": "object",
+      "fields": {}
+    },
+    "result.address": {
+      "description": "The address from which this log originated",
+      "type": "object",
+      "fields": {}
+    },
+    "result.topics": {
+      "description": "An array of (0 to 4) 32 Bytes DATA of indexed log arguments. (In solidity: The first topic is the hash of the signature of the event (e.g. Deposit(address,bytes32,uint256)), except you declared the event with the anonymous specifier)",
+      "type": "object",
+      "fields": {}
+    },
+    "result.data": {
+      "description": "It contains one or more 32 Bytes non-indexed arguments of the log",
+      "type": "object",
+      "fields": {}
+    },
+    "result.blockNumber": {
+      "description": "The block number where this log was in. null when its pending. Null when it's a pending log",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transactionHash": {
+      "description": "The hash of the transaction from which this log was created from. null if the log is pending",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transactionIndex": {
+      "description": "The integer of the transaction's index position that the log was created from. Null when it's a pending log",
+      "type": "object",
+      "fields": {}
+    },
+    "result.blockHash": {
+      "description": "The hash of the block where this log was in. Null when it's a pending log",
+      "type": "object",
+      "fields": {}
+    },
+    "result.logIndex": {
+      "description": "The integer of the log index position in the block. Null when it's a pending log",
+      "type": "object",
+      "fields": {}
+    },
+    "result.removed": {
+      "description": "It is true if log was removed, due to a chain reorganization and false if it's a valid log",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

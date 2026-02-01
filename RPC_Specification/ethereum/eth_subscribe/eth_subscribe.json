@@ -1,0 +1,50 @@
+{
+  "method_name": "eth_subscribe",
+  "description": "Starts a subscription to a specific event.",
+  "parameters": [
+    {
+      "name": "subscription_name",
+      "type": "string",
+      "description": "The type of event you want to subscribe to (i.e., newHeads, logs, newPendingTransactions). This method supports the following subscription types:",
+      "sub_parameters": [
+        {
+          "name": "newHeads",
+          "type": "string",
+          "description": "It fires a notification each time a new header is appended to the chain, including chain reorganizations",
+          "sub_parameters": []
+        },
+        {
+          "name": "logs",
+          "type": "string",
+          "description": "It returns logs that are included in new imported blocks and match the given filter criteria",
+          "sub_parameters": []
+        },
+        {
+          "name": "newPendingTransactions",
+          "type": "string",
+          "description": "It returns the hash for all transactions that are added to the pending state and are signed with a key that is available in the node",
+          "sub_parameters": []
+        }
+      ]
+    },
+    {
+      "name": "flag",
+      "type": "boolean",
+      "description": "If true, method will return the full transaction data, otherwise only the transaction hash",
+      "sub_parameters": []
+    },
+    {
+      "name": "data",
+      "type": "object",
+      "description": "The arguments such as an address, multiple addresses, and topics. Note, only logs that are created from these addresses or match the specified topics will return logs",
+      "sub_parameters": []
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "The hex encoded subscription ID. This ID will be attached to all received events and can also be used to cancel the subscription using eth_unsubscribe",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

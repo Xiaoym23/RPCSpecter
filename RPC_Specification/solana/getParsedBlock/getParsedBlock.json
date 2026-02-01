@@ -1,0 +1,248 @@
+{
+  "method_name": "getParsedBlock",
+  "description": "Returns identity and transaction information about a confirmed block in the ledger.",
+  "parameters": [
+    {
+      "name": "slot_number",
+      "type": "string",
+      "description": "The slot number encoded as u64, 64-bit unsigned integer",
+      "sub_parameters": []
+    },
+    {
+      "name": "object",
+      "type": "object",
+      "description": "The configuration object with the following fields:",
+      "sub_parameters": [
+        {
+          "name": "commitment",
+          "type": "string",
+          "description": "The level of commitment required for the query. The options include:",
+          "sub_parameters": []
+        },
+        {
+          "name": "encoding",
+          "type": "string",
+          "description": "(default: json) The encoding format for account data. It can be base58 (slow), base64, base64+zstd or jsonParsed",
+          "sub_parameters": []
+        },
+        {
+          "name": "transactionDetails",
+          "type": "string",
+          "description": "(default: full) It specifies the level of transaction details to include in the response. The possible values are full, signatures, and none",
+          "sub_parameters": []
+        },
+        {
+          "name": "rewards",
+          "type": "boolean",
+          "description": "(default: true) It determines whether to populate the rewards array or not.",
+          "sub_parameters": []
+        },
+        {
+          "name": "maxSupportedTransactionVersion",
+          "type": "boolean",
+          "description": "The maximum transaction version to return in responses. If the requested block contains a transaction with a higher version, an error will be returned. If this parameter is omitted, only legacy transactions will be returned, and a block containing any versioned transaction will prompt an error",
+          "sub_parameters": []
+        },
+        {
+          "name": "legacy",
+          "type": "boolean",
+          "description": "The older transaction format with no additional benefit",
+          "sub_parameters": []
+        },
+        {
+          "name": "0",
+          "type": "boolean",
+          "description": "The additional support for Address Lookup Tables",
+          "sub_parameters": []
+        }
+      ]
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "Null if the specified block is not confirmed otherwise an object with the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.blockhash": {
+      "description": "The hash of the confirmed block",
+      "type": "object",
+      "fields": {}
+    },
+    "result.previousBlockhash": {
+      "description": "The hash of the block's predecessor",
+      "type": "object",
+      "fields": {}
+    },
+    "result.parentSlot": {
+      "description": "The slot number of the block's parent",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transactions": {
+      "description": "An array of transaction objects within the block. Each transaction object contains the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transactions.meta": {
+      "description": "The transaction status metadata object with the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transactions.meta.err": {
+      "description": "Error code if the transaction failed or null if the transaction succeeds",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transactions.meta.fee": {
+      "description": "The transaction fee",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transactions.meta.innerInstructions": {
+      "description": "The list of inner instructions and it's omitted or null if inner instruction recording was not yet enabled during the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transactions.meta.loadedAddresses": {
+      "description": "The list of loaded addresses objects",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transactions.meta.loadedAddresses.readonly": {
+      "description": "The ordered list of base-58 encoded addresses for readonly loaded accounts",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transactions.meta.loadedAddresses.writable": {
+      "description": "The ordered list of base-58 encoded addresses for writable loaded accounts",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transactions.meta.logMessages": {
+      "description": "An array of string log messages. Omitted or null if log message recording was not yet enabled during the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transactions.meta.postBalances": {
+      "description": "An array of u64 account balances after the transaction was processed",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transactions.meta.postTokenBalances": {
+      "description": "The list of token balances from after the transaction was processed and it's omitted if inner instruction recording was not yet enabled during the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transactions.meta.preBalances": {
+      "description": "An array of u64 account balances from before the transaction was processed",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transactions.meta.preTokenBalances": {
+      "description": "The list of token balances from before the transaction was processed and it's omitted if inner instruction recording was not yet enabled during the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transactions.meta.rewards": {
+      "description": "An array of reward objects detailing the rewards for this block. It is only present if rewards are requested; an array of JSON objects with the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transactions.meta.rewards.pubkey": {
+      "description": "The public key of the account receiving the reward",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transactions.meta.rewards.lamports": {
+      "description": "The amount of lamports rewarded",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transactions.meta.rewards.postBalance": {
+      "description": "The balance of the account after receiving the reward",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transactions.meta.rewards.rewardType": {
+      "description": "The type of reward such as fee or stake",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transactions.meta.rewards.comission": {
+      "description": "The vote account commission when the reward was credited, only present for voting and staking rewards",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transactions.meta.status": {
+      "description": "The processing status of the transaction. It returns Ok if the transaction was successful and Err if the transaction failed with TransactionError",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transaction": {
+      "description": "The transaction object with the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transaction.message": {
+      "description": "The transaction message containing the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transaction.message.accountKeys": {
+      "description": "An array of public keys involved in the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transaction.message.header": {
+      "description": "An object containing the transaction's header, including the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transaction.message.header.numRequiredSignatures": {
+      "description": "The number of required signatures for the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transaction.message.header.numReadonlySignedAccounts": {
+      "description": "The number of readonly accounts that have signed the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transaction.message.header.numReadonlyUnsignedAccounts": {
+      "description": "The number of readonly accounts that have not signed the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transaction.message.instructions": {
+      "description": "An array of instruction objects for the transaction with the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transaction.message.instructions.accounts": {
+      "description": "An array of integers representing the indices of accounts involved in the instruction",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transaction.message.instructions.data": {
+      "description": "The instruction data encoded in the specified format",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transaction.message.instructions.programIdIndex": {
+      "description": "The index of the program ID in the accountKeys",
+      "type": "object",
+      "fields": {}
+    },
+    "result.recentBlockhash": {
+      "description": "The most recent blockhash used for the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "result.signatures": {
+      "description": "An array of signatures strings corresponding to the transaction order in the block",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

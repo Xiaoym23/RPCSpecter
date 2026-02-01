@@ -1,0 +1,120 @@
+{
+  "method_name": "debug_traceTransaction",
+  "description": "Returns all traces of a given transaction.",
+  "parameters": [
+    {
+      "name": "transactionHash",
+      "type": "string",
+      "description": "The transaction hash that needs to be traced, encoded in hexadecimal format",
+      "sub_parameters": []
+    },
+    {
+      "name": "object",
+      "type": "array",
+      "description": "The tracer object with the following fields:",
+      "sub_parameters": [
+        {
+          "name": "tracer",
+          "type": "string",
+          "description": "The type of tracer. It could be callTracer or prestateTracer",
+          "sub_parameters": [
+            {
+              "name": "callTracer",
+              "type": "string",
+              "description": "The calltracer keeps track of all call frames, including depth 0 calls, that are made during a transaction",
+              "sub_parameters": []
+            },
+            {
+              "name": "prestateTracer",
+              "type": "string",
+              "description": "The prestateTracer replays the transaction and tracks every part of state that occured during the transaction",
+              "sub_parameters": []
+            }
+          ]
+        },
+        {
+          "name": "tracerConfig",
+          "type": "object",
+          "description": "The object to specify the configurations of the tracer",
+          "sub_parameters": [
+            {
+              "name": "onlyTopCall",
+              "type": "boolean",
+              "description": "When set to true, this will only trace the primary (top-level) call and not any sub-calls. It eliminates the additional processing for each call frame",
+              "sub_parameters": []
+            },
+            {
+              "name": "diffMode",
+              "type": "boolean",
+              "description": "When set to true, diff mode returns the differences between the transaction's pre and post-state. The result object will contain a pre and a post object.",
+              "sub_parameters": []
+            }
+          ]
+        },
+        {
+          "name": "timeout",
+          "type": "string",
+          "description": "A string of decimal integers that overrides the JavaScript-based tracing calls default timeout of 5 seconds",
+          "sub_parameters": []
+        }
+      ]
+    }
+  ],
+  "returns": {
+    "type": {
+      "description": "The type of the call",
+      "type": "object",
+      "fields": {}
+    },
+    "from": {
+      "description": "The address the transaction is sent from",
+      "type": "object",
+      "fields": {}
+    },
+    "to": {
+      "description": "The address the transaction is directed to",
+      "type": "object",
+      "fields": {}
+    },
+    "value": {
+      "description": "The integer of the value sent with this transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "gas": {
+      "description": "The integer of the gas provided for the transaction execution",
+      "type": "object",
+      "fields": {}
+    },
+    "gasUsed": {
+      "description": "The integer of the gas used",
+      "type": "object",
+      "fields": {}
+    },
+    "input": {
+      "description": "The data given at the time of input",
+      "type": "object",
+      "fields": {}
+    },
+    "output": {
+      "description": "The data which is returned as an output",
+      "type": "object",
+      "fields": {}
+    },
+    "error": {
+      "description": "The type of error, if any",
+      "type": "object",
+      "fields": {}
+    },
+    "revertReason": {
+      "description": "The type solidity revert reason, if any",
+      "type": "object",
+      "fields": {}
+    },
+    "calls": {
+      "description": "A list of sub-calls",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

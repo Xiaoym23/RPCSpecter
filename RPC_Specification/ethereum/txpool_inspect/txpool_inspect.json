@@ -1,0 +1,22 @@
+{
+  "method_name": "txpool_inspect",
+  "description": "Returns a textual summary of all pending and queued transactions (Supported only on Geth).",
+  "parameters": [],
+  "returns": {
+    "array": {
+      "description": "A list of pending and queued transactions",
+      "type": "object",
+      "fields": {}
+    },
+    "array.pending": {
+      "description": "An array of transaction objects, with textual data",
+      "type": "object",
+      "fields": {}
+    },
+    "array.queued": {
+      "description": "An array of transaction objects, with textual data",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

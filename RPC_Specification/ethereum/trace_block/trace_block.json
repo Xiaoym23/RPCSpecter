@@ -1,0 +1,109 @@
+{
+  "method_name": "trace_block",
+  "description": "Returns traces created at given block (Supported on Erigon).",
+  "parameters": [
+    {
+      "name": "blockNumber",
+      "type": "string",
+      "description": "The block number as a string in hexadecimal format or tags. The supported tag values include earliest for the earliest/genesis block, latest for the latest mined block, pending for the pending state/transactions, safe for the most recent secure block, and finalized for the most recent secure block accepted by more than 2/3 of validators. safe and finalized are only supported on Ethereum and Gnosis",
+      "sub_parameters": []
+    }
+  ],
+  "returns": {
+    "array": {
+      "description": "The block traces, which have the following fields (please note that all return types are hexadecimal representations of their data type unless otherwise stated):",
+      "type": "object",
+      "fields": {}
+    },
+    "array.action": {
+      "description": "The ParityTrace object, which has the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "array.action.from": {
+      "description": "The address of the sender",
+      "type": "object",
+      "fields": {}
+    },
+    "array.action.callType": {
+      "description": "The type of method such as call, delegatecall",
+      "type": "object",
+      "fields": {}
+    },
+    "array.action.gas": {
+      "description": "The gas provided by the sender, encoded as hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "array.action.input": {
+      "description": "The data sent along with the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "array.action.to": {
+      "description": "The address of the receiver",
+      "type": "object",
+      "fields": {}
+    },
+    "array.action.value": {
+      "description": "The integer of the value sent with this transaction, encoded as hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "array.blockHash": {
+      "description": "The hash of the block where this transaction was in",
+      "type": "object",
+      "fields": {}
+    },
+    "array.blockNumber": {
+      "description": "An integer value representing the block number where this transaction was in",
+      "type": "object",
+      "fields": {}
+    },
+    "array.error": {
+      "description": "The error message, if any",
+      "type": "object",
+      "fields": {}
+    },
+    "array.result": {
+      "description": "The ParityTraceResult object which has the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "array.result.gasUsed": {
+      "description": "The amount of gas used by this specific transaction alone",
+      "type": "object",
+      "fields": {}
+    },
+    "array.result.output": {
+      "description": "The value returned by the contract call, and it only contains the actual value sent by the RETURN method. If the RETURN method was not executed, the output is empty bytes",
+      "type": "object",
+      "fields": {}
+    },
+    "array.subtraces": {
+      "description": "The traces of contract calls made by the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "array.traceAddress": {
+      "description": "The list of addresses where the call executed, the address of the parents and the order of the current sub call",
+      "type": "object",
+      "fields": {}
+    },
+    "array.transactionHash": {
+      "description": "The hash of the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "array.transactionPosition": {
+      "description": "The transaction position",
+      "type": "object",
+      "fields": {}
+    },
+    "array.type": {
+      "description": "The value of the method such as call or create",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

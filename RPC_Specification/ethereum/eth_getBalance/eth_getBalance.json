@@ -1,0 +1,25 @@
+{
+  "method_name": "eth_getBalance",
+  "description": "Returns the balance of given account address in wei.",
+  "parameters": [
+    {
+      "name": "address",
+      "type": "string",
+      "description": "The address (20 bytes) to check for balance",
+      "sub_parameters": []
+    },
+    {
+      "name": "blockNumber",
+      "type": "string",
+      "description": "The block number in hexadecimal format or the string latest, earliest, pending, safe or finalized (safe and finalized tags are only supported on Ethereum, Gnosis, Arbitrum, Arbitrum Nova and Avalanche C-chain), see the default block parameter description in the official Ethereum documentation",
+      "sub_parameters": []
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "The ETH balance of the specified address in hexadecimal value, measured in wei",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

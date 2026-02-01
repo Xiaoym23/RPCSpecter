@@ -1,0 +1,32 @@
+{
+  "method_name": "getMinimumBalanceForRentExemption",
+  "description": "Returns minimum balance required to make account rent exempt.",
+  "parameters": [
+    {
+      "name": "usize",
+      "type": "integer",
+      "description": "The account data length",
+      "sub_parameters": []
+    },
+    {
+      "name": "object",
+      "type": "object",
+      "description": "The configuration object with the following fields:",
+      "sub_parameters": [
+        {
+          "name": "commitment",
+          "type": "string",
+          "description": "The level of commitment required for the query. The options include:",
+          "sub_parameters": []
+        }
+      ]
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "The minimum lamports required in an account to remain rent free, which is encoded as u64, 64-bit unsigned integer",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

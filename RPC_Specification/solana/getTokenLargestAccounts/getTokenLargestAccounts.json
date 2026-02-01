@@ -1,0 +1,77 @@
+{
+  "method_name": "getTokenLargestAccounts",
+  "description": "Returns the 20 largest accounts of a particular SPL Token type.",
+  "parameters": [
+    {
+      "name": "pubkey",
+      "type": "string",
+      "description": "The Pubkey of token Mint to query encoded as base-58 string",
+      "sub_parameters": []
+    },
+    {
+      "name": "object",
+      "type": "object",
+      "description": "The configuration object with the following fields:",
+      "sub_parameters": [
+        {
+          "name": "commitment",
+          "type": "string",
+          "description": "The level of commitment required for the query. The options include:",
+          "sub_parameters": []
+        }
+      ]
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "An object with the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.context": {
+      "description": "The information about the current state of the program",
+      "type": "object",
+      "fields": {}
+    },
+    "result.context.apiVersion": {
+      "description": "The version of the Solana RPC API to use",
+      "type": "object",
+      "fields": {}
+    },
+    "result.context.slot": {
+      "description": "An integer representing the slot for which to retrieve the fee calculator",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value": {
+      "description": "A JSON object with the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.address": {
+      "description": "The address of the token account",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.amount": {
+      "description": "The raw total token supply without decimals, a string representation of a u64 integer",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.decimals": {
+      "description": "An integer value representing the number of decimal places used by the token",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.uiAmount": {
+      "description": "The total token supply using mint-prescribed decimals (DEPRECATED)",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value.uiAmountString": {
+      "description": "The total token supply as a string using mint-prescribed decimals",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

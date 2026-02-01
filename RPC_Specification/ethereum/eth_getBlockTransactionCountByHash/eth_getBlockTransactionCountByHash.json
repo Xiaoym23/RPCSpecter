@@ -1,0 +1,19 @@
+{
+  "method_name": "eth_getBlockTransactionCountByHash",
+  "description": "Returns the number of transactions for the block matching the given block hash.",
+  "parameters": [
+    {
+      "name": "hash",
+      "type": "string",
+      "description": "The hash of the block",
+      "sub_parameters": []
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "The number of transactions associated with a specific block, in hexadecimal value",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "method_name": "getVersion",
+  "description": "Returns the current solana version running on the node.",
+  "parameters": [],
+  "returns": {
+    "result": {
+      "description": "A JSON object with the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.solana-core": {
+      "description": "The software version of solana-core",
+      "type": "object",
+      "fields": {}
+    },
+    "result.feature-set": {
+      "description": "The unique identifier of the current software's feature set",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

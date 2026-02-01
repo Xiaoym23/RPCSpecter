@@ -1,0 +1,82 @@
+{
+  "method_name": "net_version",
+  "description": "Returns the current network id.",
+  "parameters": [],
+  "returns": {
+    "result": {
+      "description": "The string value of current network id. Typical values are as follows:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.1 - ethereum mainnet": {
+      "description": "",
+      "type": "object",
+      "fields": {}
+    },
+    "result.2 - morden testnet (deprecated)": {
+      "description": "",
+      "type": "object",
+      "fields": {}
+    },
+    "result.3 - ropsten testnet": {
+      "description": "",
+      "type": "object",
+      "fields": {}
+    },
+    "result.4 - rinkeby testnet": {
+      "description": "",
+      "type": "object",
+      "fields": {}
+    },
+    "result.5 - goerli testnet": {
+      "description": "",
+      "type": "object",
+      "fields": {}
+    },
+    "result.11155111 - sepolia testnet": {
+      "description": "",
+      "type": "object",
+      "fields": {}
+    },
+    "result.10 - optimism mainnet": {
+      "description": "",
+      "type": "object",
+      "fields": {}
+    },
+    "result.69 - optimism kovan testnet": {
+      "description": "",
+      "type": "object",
+      "fields": {}
+    },
+    "result.42 - kovan testnet": {
+      "description": "",
+      "type": "object",
+      "fields": {}
+    },
+    "result.137 - matic/polygon mainnet": {
+      "description": "",
+      "type": "object",
+      "fields": {}
+    },
+    "result.80001 - matic/polygon mumbai testnet": {
+      "description": "",
+      "type": "object",
+      "fields": {}
+    },
+    "result.250 - fantom mainnet": {
+      "description": "",
+      "type": "object",
+      "fields": {}
+    },
+    "result.100 - xdai mainnet": {
+      "description": "",
+      "type": "object",
+      "fields": {}
+    },
+    "result.56 - bsc mainnet": {
+      "description": "",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

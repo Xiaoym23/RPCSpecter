@@ -1,0 +1,46 @@
+{
+  "method_name": "eth_feeHistory",
+  "description": "Returns the collection of historical gas information.",
+  "parameters": [
+    {
+      "name": "blockCount",
+      "type": "string/integer",
+      "description": "The number of blocks in the requested range. Between 1 and 1024 blocks can be requested in a single query. It will return less than the requested range if not all blocks are available",
+      "sub_parameters": []
+    },
+    {
+      "name": "newestBlock",
+      "type": "string",
+      "description": "The highest number block of the requested range in hexadecimal format or tags. The supported tag values include earliest for the earliest/genesis block, latest for the latest mined block, pending for the pending state/transactions, safe for the most recent secure block, and finalized for the most recent secure block accepted by more than 2/3 of validators. safe and finalized are only supported on Ethereum, Gnosis, Arbitrum, Arbitrum Nova, and Avalanche C-chain",
+      "sub_parameters": []
+    },
+    {
+      "name": "rewardPercentiles",
+      "type": "integer",
+      "description": "A list of percentile values with a monotonic increase in value. The transactions will be ranked by effective tip per gas for each block in the requested range, and the corresponding effective tip for the percentile will be calculated while taking gas consumption into consideration",
+      "sub_parameters": []
+    }
+  ],
+  "returns": {
+    "oldestBlock": {
+      "description": "The lowest number block of the returned range encoded in hexadecimal format",
+      "type": "object",
+      "fields": {}
+    },
+    "baseFeePerGas": {
+      "description": "An array of block base fees per gas. This includes the next block after the newest of the returned range, because this value can be derived from the newest block. Zeroes are returned for pre-EIP-1559 blocks",
+      "type": "object",
+      "fields": {}
+    },
+    "gasUsedRatio": {
+      "description": "An array of block gas used ratios. These are calculated as the ratio of gasUsed and gasLimit",
+      "type": "object",
+      "fields": {}
+    },
+    "reward": {
+      "description": "An array of effective priority fees per gas data points from a single block. All zeroes are returned if the block is empty",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

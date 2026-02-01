@@ -1,0 +1,12 @@
+{
+  "method_name": "eth_maxPriorityFeePerGas",
+  "description": "Get the priority fee needed to be included in a block.",
+  "parameters": [],
+  "returns": {
+    "result": {
+      "description": "The hex value of the priority fee needed to be included in a block",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

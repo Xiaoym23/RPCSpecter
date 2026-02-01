@@ -1,0 +1,58 @@
+{
+  "method_name": "getBalance",
+  "description": "Returns the balance of the account of provided Pubkey.",
+  "parameters": [
+    {
+      "name": "address",
+      "type": "string",
+      "description": "The Pubkey of the account to query encoded as base-58 string",
+      "sub_parameters": []
+    },
+    {
+      "name": "object",
+      "type": "object",
+      "description": "The configuration object with the following fields:",
+      "sub_parameters": [
+        {
+          "name": "commitment",
+          "type": "string",
+          "description": "The level of commitment required for the query. The options include:",
+          "sub_parameters": []
+        },
+        {
+          "name": "minContextSlot",
+          "type": "integer",
+          "description": "The minimum slot at which the request can be evaluated",
+          "sub_parameters": []
+        }
+      ]
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "Null if the account doesn't exist otherwise RpcResponse JSON object with the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.context": {
+      "description": "An object that contains metadata about the current state of the Solana network at the time the request was processed",
+      "type": "object",
+      "fields": {}
+    },
+    "result.context.apiVersion": {
+      "description": "The version number",
+      "type": "object",
+      "fields": {}
+    },
+    "result.context.slot": {
+      "description": "The current slot in the Solana cluster during which the transactions are processed and new blocks are added to the blockchain",
+      "type": "object",
+      "fields": {}
+    },
+    "result.value": {
+      "description": "The balance of the account of provided Pubkey",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "method_name": "getMaxShredInsertSlot",
+  "description": "Get the max slot seen from after shred insert.",
+  "parameters": [],
+  "returns": {
+    "result": {
+      "description": "The slot number encoded as u64, 64-bit unsigned integer",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

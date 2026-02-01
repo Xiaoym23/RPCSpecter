@@ -1,0 +1,12 @@
+{
+  "method_name": "getHealth",
+  "description": "Returns the current health of the node.",
+  "parameters": [],
+  "returns": {
+    "result": {
+      "description": "Ok, if the node is healthy or JSON RPC error response, if the node is unhealthy. Please note that the specifics of the error response are UNSTABLE and may change in the future",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

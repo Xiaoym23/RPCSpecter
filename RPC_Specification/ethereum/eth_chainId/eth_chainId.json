@@ -1,0 +1,12 @@
+{
+  "method_name": "eth_chainId",
+  "description": "Returns the current network/chain ID, used to sign replay-protected transaction introduced in EIP-155.",
+  "parameters": [],
+  "returns": {
+    "chain ID": {
+      "description": "It returns a hexadecimal value in string format which represents an integer of the chain ID",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "method_name": "txpool_contentFrom",
+  "description": "Retrieves the transactions contained within the txpool, returning pending and queued transactions of this address, grouped by nonce",
+  "parameters": [
+    {
+      "name": "address",
+      "type": "string",
+      "description": "The sender address to filter transactions",
+      "sub_parameters": []
+    }
+  ],
+  "returns": {
+    "array": {
+      "description": "A list of pending and queued transactions",
+      "type": "object",
+      "fields": {}
+    },
+    "array.pending": {
+      "description": "An array of transaction objects, with textual data",
+      "type": "object",
+      "fields": {}
+    },
+    "array.queued": {
+      "description": "An array of transaction objects, with textual data",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "method_name": "getIdentity",
+  "description": "Returns the identity pubkey for the current node.",
+  "parameters": [],
+  "returns": {
+    "result": {
+      "description": "The result will be a JSON object with the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.identity": {
+      "description": "The public key identity of the current node as base-58 encoded string",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

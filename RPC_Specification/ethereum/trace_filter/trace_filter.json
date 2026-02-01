@@ -1,0 +1,146 @@
+{
+  "method_name": "trace_filter",
+  "description": "Returns traces matching given filter (Supported on Erigon).",
+  "parameters": [
+    {
+      "name": "object",
+      "type": "array",
+      "description": "The filter object",
+      "sub_parameters": [
+        {
+          "name": "fromBlock",
+          "type": "",
+          "description": "The Quantity or Tag from this block",
+          "sub_parameters": []
+        },
+        {
+          "name": "toBlock",
+          "type": "",
+          "description": "The Quantity or Tag to this block",
+          "sub_parameters": []
+        },
+        {
+          "name": "fromAddress",
+          "type": "",
+          "description": "An array addresses of the senders",
+          "sub_parameters": []
+        },
+        {
+          "name": "toAddress",
+          "type": "",
+          "description": "An array addresses of the receivers",
+          "sub_parameters": []
+        },
+        {
+          "name": "after",
+          "type": "",
+          "description": "The offset trace number",
+          "sub_parameters": []
+        },
+        {
+          "name": "count",
+          "type": "",
+          "description": "The integer number of traces to display in a batch",
+          "sub_parameters": []
+        }
+      ]
+    }
+  ],
+  "returns": {
+    "array": {
+      "description": "The block traces, which have the following fields (please note that all return types are hexadecimal representations of their data type unless otherwise stated):",
+      "type": "object",
+      "fields": {}
+    },
+    "array.action": {
+      "description": "The ParityTrace object, which has the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "array.action.action": {
+      "description": "The action to be performed on the receiver id:",
+      "type": "object",
+      "fields": {}
+    },
+    "array.action.action.from": {
+      "description": "The address of the sender",
+      "type": "object",
+      "fields": {}
+    },
+    "array.action.action.callType": {
+      "description": "The type of method such as call, delegatecall",
+      "type": "object",
+      "fields": {}
+    },
+    "array.action.action.gas": {
+      "description": "The gas provided by the sender, encoded as hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "array.action.action.input": {
+      "description": "The data sent along with the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "array.action.action.to": {
+      "description": "The address of the receiver",
+      "type": "object",
+      "fields": {}
+    },
+    "array.action.action.value": {
+      "description": "The integer of the value sent with this transaction, encoded as hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "array.action.blockHash": {
+      "description": "The hash of the block where this transaction was in",
+      "type": "object",
+      "fields": {}
+    },
+    "array.action.blockNumber": {
+      "description": "The block number where this transaction was in",
+      "type": "object",
+      "fields": {}
+    },
+    "array.action.result": {
+      "description": "The integer of the gas price used encoded as hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "array.action.result.gasUsed": {
+      "description": "The amount of gas used by this specific transaction alone",
+      "type": "object",
+      "fields": {}
+    },
+    "array.action.result.output": {
+      "description": "The value returned by the contract call, and it only contains the actual value sent by the RETURN method. If the RETURN method was not executed, the output is empty bytes",
+      "type": "object",
+      "fields": {}
+    },
+    "array.action.subtraces": {
+      "description": "The traces of contract calls made by the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "array.action.traceAddress": {
+      "description": "The list of addresses where the call executed, the address of the parents and the order of the current sub call",
+      "type": "object",
+      "fields": {}
+    },
+    "array.action.transactionHash": {
+      "description": "The hash of the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "array.action.transactionPosition": {
+      "description": "The transaction position",
+      "type": "object",
+      "fields": {}
+    },
+    "array.action.type": {
+      "description": "The value of the method such as call or create",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

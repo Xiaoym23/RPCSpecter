@@ -1,0 +1,134 @@
+{
+  "method_name": "getVoteAccounts",
+  "description": "Returns the account info and associated stake for all the voting accounts in the current bank.",
+  "parameters": [
+    {
+      "name": "object",
+      "type": "object",
+      "description": "The configuration object with the following fields:",
+      "sub_parameters": [
+        {
+          "name": "commitment",
+          "type": "string",
+          "description": "The level of commitment required for the query. The options include:",
+          "sub_parameters": []
+        },
+        {
+          "name": "votePubkey",
+          "type": "string",
+          "description": "(optional) Only return results for this validator vote address (base-58 encoded)",
+          "sub_parameters": []
+        },
+        {
+          "name": "keepUnstakedDelinquents",
+          "type": "boolean",
+          "description": "The boolean value that determines whether or not to filter out delinquent validators with no stake",
+          "sub_parameters": []
+        },
+        {
+          "name": "delinquentSlotDistance",
+          "type": "u64",
+          "description": "Specify the number of slots behind the tip that a validator must fall to be considered delinquent. The parameter is passed as an integer and it's not recomended to specify this argument",
+          "sub_parameters": []
+        }
+      ]
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "A JSON object of current and delinquent accounts, each containing an array of JSON objects with the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.current": {
+      "description": "The current account with the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.current.activatedStake": {
+      "description": "The stake, in lamports, delegated to this vote account and active in this epoch. Represented as an u64 integer",
+      "type": "object",
+      "fields": {}
+    },
+    "result.current.commission": {
+      "description": "The percentage (0-100) of rewards payout owed to the vote account",
+      "type": "object",
+      "fields": {}
+    },
+    "result.current.epochCredits": {
+      "description": "The latest history of earned credits for up to five epochs, as an array of arrays containing: epoch, credits, previousCredits",
+      "type": "object",
+      "fields": {}
+    },
+    "result.current.epochVoteAccount": {
+      "description": "Boolean value, whether the vote account is staked for this epoch",
+      "type": "object",
+      "fields": {}
+    },
+    "result.current.lastVote": {
+      "description": "Most recent slot voted on by this vote account",
+      "type": "object",
+      "fields": {}
+    },
+    "result.current.nodePubkey": {
+      "description": "The validator identity as base-58 encoded string",
+      "type": "object",
+      "fields": {}
+    },
+    "result.current.rootSlot": {
+      "description": "The current root slot for this vote account",
+      "type": "object",
+      "fields": {}
+    },
+    "result.current.votePubkey": {
+      "description": "The vote account address as base-58 encoded string",
+      "type": "object",
+      "fields": {}
+    },
+    "result.delinquent": {
+      "description": "The delinquent account with the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.delinquent.activatedStake": {
+      "description": "The stake, in lamports, delegated to this vote account and active in this epoch. Represented as an u64 integer",
+      "type": "object",
+      "fields": {}
+    },
+    "result.delinquent.commission": {
+      "description": "The percentage (0-100) of rewards payout owed to the vote account",
+      "type": "object",
+      "fields": {}
+    },
+    "result.delinquent.epochCredits": {
+      "description": "The latest history of earned credits for up to five epochs, as an array of arrays containing: epoch, credits, previousCredits",
+      "type": "object",
+      "fields": {}
+    },
+    "result.delinquent.epochVoteAccount": {
+      "description": "Boolean value, whether the vote account is staked for this epoch",
+      "type": "object",
+      "fields": {}
+    },
+    "result.delinquent.lastVote": {
+      "description": "Most recent slot voted on by this vote account",
+      "type": "object",
+      "fields": {}
+    },
+    "result.delinquent.nodePubkey": {
+      "description": "The validator identity as base-58 encoded string",
+      "type": "object",
+      "fields": {}
+    },
+    "result.delinquent.rootSlot": {
+      "description": "The current root slot for this vote account",
+      "type": "object",
+      "fields": {}
+    },
+    "result.delinquent.votePubkey": {
+      "description": "The vote account address as base-58 encoded string",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

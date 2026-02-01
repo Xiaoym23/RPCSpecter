@@ -1,0 +1,12 @@
+{
+  "method_name": "web3_clientVersion",
+  "description": "Returns the current version of the chain client.",
+  "parameters": [],
+  "returns": {
+    "result": {
+      "description": "The current client version in string format",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

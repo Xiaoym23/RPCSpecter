@@ -1,0 +1,31 @@
+{
+  "method_name": "eth_getStorageAt",
+  "description": "Returns the value from a storage position at a given address.",
+  "parameters": [
+    {
+      "name": "address",
+      "type": "string",
+      "description": "The address to check for storage",
+      "sub_parameters": []
+    },
+    {
+      "name": "position",
+      "type": "string",
+      "description": "The integer of the position in storage",
+      "sub_parameters": []
+    },
+    {
+      "name": "blockNumber",
+      "type": "string",
+      "description": "The block number as a string in hexadecimal format or tags. The supported tag values include earliest for the earliest/genesis block, latest for the latest mined block, pending for the pending state/transactions, safe for the most recent secure block, and finalized for the most recent secure block accepted by more than 2/3 of validators. safe and finalized are only supported on Ethereum, Gnosis, Arbitrum, Arbitrum Nova, and Avalanche C-chain",
+      "sub_parameters": []
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "It returns the value from a storage position at a given address",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

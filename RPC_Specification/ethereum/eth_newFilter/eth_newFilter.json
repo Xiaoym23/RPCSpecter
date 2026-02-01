@@ -1,0 +1,44 @@
+{
+  "method_name": "eth_newFilter",
+  "description": "Creates a filter object, based on filter options, to notify when the state changes (logs). To check if the state has changed, call eth_getFilterChanges.",
+  "parameters": [
+    {
+      "name": "object",
+      "type": "array",
+      "description": "The transaction response object which contains the following filter information:",
+      "sub_parameters": [
+        {
+          "name": "fromBlock",
+          "type": "string",
+          "description": "The block number as a string in hexadecimal format or tags. The supported tag values include earliest for the earliest/genesis block, latest for the latest mined block, pending for the pending state/transactions, safe for the most recent secure block, and finalized for the most recent secure block accepted by more than 2/3 of validators. safe and finalized are only supported on Ethereum, Gnosis, Arbitrum, Arbitrum Nova, and Avalanche C-chain",
+          "sub_parameters": []
+        },
+        {
+          "name": "toBlock",
+          "type": "string",
+          "description": "The block number as a string in hexadecimal format or tags. The supported tag values include earliest for the earliest/genesis block, latest for the latest mined block, pending for the pending state/transactions, safe for the most recent secure block, and finalized for the most recent secure block accepted by more than 2/3 of validators. safe and finalized are only supported on Ethereum, Gnosis, Arbitrum, Arbitrum Nova, and Avalanche C-chain",
+          "sub_parameters": []
+        },
+        {
+          "name": "address",
+          "type": "string",
+          "description": "The contract address or a list of addresses from which logs should originate",
+          "sub_parameters": []
+        },
+        {
+          "name": "topics",
+          "type": "string",
+          "description": "An array of DATA topics and also, the topics are order-dependent. Visit here to learn more about topics",
+          "sub_parameters": []
+        }
+      ]
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "It returns a filter id to be used when calling eth_getFilterChanges",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

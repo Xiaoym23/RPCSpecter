@@ -1,0 +1,19 @@
+{
+  "method_name": "eth_uninstallFilter",
+  "description": "It uninstalls a filter with the given filter id.",
+  "parameters": [
+    {
+      "name": "filterID",
+      "type": "string",
+      "description": "The filter ID that needs to be uninstalled. It should always be called when watch is no longer needed. Additionally, Filters timeout when they aren't requested with eth_getFilterChanges for a period of time",
+      "sub_parameters": []
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "It returns true if the filter was successfully uninstalled, otherwise false",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

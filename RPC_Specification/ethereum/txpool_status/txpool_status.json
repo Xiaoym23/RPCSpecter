@@ -1,0 +1,22 @@
+{
+  "method_name": "txpool_status",
+  "description": "Returns the number of transactions in pending and queued states (Supported only on Geth).",
+  "parameters": [],
+  "returns": {
+    "object": {
+      "description": "The transaction call object which contains the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "object.pending": {
+      "description": "The total number of pending transactions in the txpool, represented in hexadecimal format",
+      "type": "object",
+      "fields": {}
+    },
+    "object.queued": {
+      "description": "The total number of queued transactions in the txpool, represented in hexadecimal format",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

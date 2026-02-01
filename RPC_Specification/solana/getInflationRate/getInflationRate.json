@@ -1,0 +1,32 @@
+{
+  "method_name": "getInflationRate",
+  "description": "Returns the specific inflation values for the current epoch.",
+  "parameters": [],
+  "returns": {
+    "result": {
+      "description": "The result will be an object with the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.epoch": {
+      "description": "The epoch during which these values remain valid",
+      "type": "object",
+      "fields": {}
+    },
+    "result.foundation": {
+      "description": "The proportion of total inflation allocated to the foundation",
+      "type": "object",
+      "fields": {}
+    },
+    "result.total": {
+      "description": "The total inflation",
+      "type": "object",
+      "fields": {}
+    },
+    "result.validator": {
+      "description": "The portion of inflation designated for validators",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

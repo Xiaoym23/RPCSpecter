@@ -1,0 +1,51 @@
+{
+  "method_name": "getInflationGovernor",
+  "description": "Returns the current inflation governor.",
+  "parameters": [
+    {
+      "name": "object",
+      "type": "object",
+      "description": "The configuration object with the following fields:",
+      "sub_parameters": [
+        {
+          "name": "commitment",
+          "type": "string",
+          "description": "The level of commitment required for the query. The options include:",
+          "sub_parameters": []
+        }
+      ]
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "The result will be an object with the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.foundation": {
+      "description": "The proportion of total inflation allocated to the foundation",
+      "type": "object",
+      "fields": {}
+    },
+    "result.foundationTerm": {
+      "description": "The time period in years during which the foundation allocation will be paid out",
+      "type": "object",
+      "fields": {}
+    },
+    "result.initial": {
+      "description": "The initial inflation percentage from time 0",
+      "type": "object",
+      "fields": {}
+    },
+    "result.taper": {
+      "description": "The time period in years during which the inflation rate will gradually decrease from the initial rate to the final rate",
+      "type": "object",
+      "fields": {}
+    },
+    "result.terminal": {
+      "description": "The terminal inflation percentage",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

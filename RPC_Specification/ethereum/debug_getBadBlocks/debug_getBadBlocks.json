@@ -1,0 +1,217 @@
+{
+  "method_name": "debug_getBadBlocks",
+  "description": "Returns a list of the last bad blocks that the client has seen on the network.",
+  "parameters": [],
+  "returns": {
+    "hash": {
+      "description": "The hash of the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "block": {
+      "description": "A block object, or null when no block was found",
+      "type": "object",
+      "fields": {}
+    },
+    "block.baseFeePerGas": {
+      "description": "The integer of the difficulty for this block encoded as hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "block.difficulty": {
+      "description": "The integer of the difficulty for this block encoded as hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "block.extraData": {
+      "description": "The extra data field of this block",
+      "type": "object",
+      "fields": {}
+    },
+    "block.gasLimit": {
+      "description": "The maximum gas allowed in this block encoded as hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "block.gasUsed": {
+      "description": "The total used gas by all transactions in this block encoded as hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "block.hash": {
+      "description": "The block hash of the requested block. Null if pending",
+      "type": "object",
+      "fields": {}
+    },
+    "block.logsBloom": {
+      "description": "The bloom filter for the logs of the block. Null if pending",
+      "type": "object",
+      "fields": {}
+    },
+    "block.miner": {
+      "description": "The address of the beneficiary to whom the mining rewards were given",
+      "type": "object",
+      "fields": {}
+    },
+    "block.mixHash": {
+      "description": "A string of a 256-bit hash encoded as hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "block.nonce": {
+      "description": "The hash of the generated proof-of-work. Null if pending",
+      "type": "object",
+      "fields": {}
+    },
+    "block.number": {
+      "description": "The block number of the requested block encoded as hexadecimal. Null if pending",
+      "type": "object",
+      "fields": {}
+    },
+    "block.parentHash": {
+      "description": "The hash of the parent block",
+      "type": "object",
+      "fields": {}
+    },
+    "block.receiptsRoot": {
+      "description": "The root of the receipts trie of the block",
+      "type": "object",
+      "fields": {}
+    },
+    "block.sha3Uncles": {
+      "description": "The SHA3 of the uncles data in the block",
+      "type": "object",
+      "fields": {}
+    },
+    "block.size": {
+      "description": "The size of this block in bytes as an Integer value encoded as hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "block.stateRoot": {
+      "description": "The root of the final state trie of the block",
+      "type": "object",
+      "fields": {}
+    },
+    "block.timestamp": {
+      "description": "The unix timestamp for when the block was collated",
+      "type": "object",
+      "fields": {}
+    },
+    "block.transactions": {
+      "description": "An array of transaction objects with the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "block.transactions.blockHash": {
+      "description": "The hash of the block where this log was in. Null when it's a pending log",
+      "type": "object",
+      "fields": {}
+    },
+    "block.transactions.blockNumber": {
+      "description": "The block number where this log was in. Null when it's a pending log",
+      "type": "object",
+      "fields": {}
+    },
+    "block.transactions.from": {
+      "description": "The address of the sender",
+      "type": "object",
+      "fields": {}
+    },
+    "block.transactions.gas": {
+      "description": "The gas provided by the sender, encoded as hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "block.transactions.gasPrice": {
+      "description": "The gas price provided by the sender in wei, encoded as hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "block.transactions.maxFeePerGas": {
+      "description": "The maximum fee per gas set in the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "block.transactions.maxPriorityFeePerGas": {
+      "description": "The maximum priority gas fee set in the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "block.transactions.hash": {
+      "description": "The hash of the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "block.transactions.input": {
+      "description": "The data sent along with the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "block.transactions.nonce": {
+      "description": "The number of transactions made by the sender before this one encoded as hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "block.transactions.to": {
+      "description": "The address of the receiver. Null when it's a contract creation transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "block.transactions.transactionIndex": {
+      "description": "The integer of the transaction's index position that the log was created from. Null when it's a pending log",
+      "type": "object",
+      "fields": {}
+    },
+    "block.transactions.value": {
+      "description": "The value transferred in wei encoded as hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "block.transactions.type": {
+      "description": "The transaction type",
+      "type": "object",
+      "fields": {}
+    },
+    "block.transactions.accessList": {
+      "description": "A list of addresses and storage keys that the transaction plans to access",
+      "type": "object",
+      "fields": {}
+    },
+    "block.transactions.chainId": {
+      "description": "The chain id of the transaction, if any",
+      "type": "object",
+      "fields": {}
+    },
+    "block.transactions.v": {
+      "description": "The standardized V field of the signature",
+      "type": "object",
+      "fields": {}
+    },
+    "block.transactions.r": {
+      "description": "The R field of the signature",
+      "type": "object",
+      "fields": {}
+    },
+    "block.transactions.s": {
+      "description": "The S field of the signature",
+      "type": "object",
+      "fields": {}
+    },
+    "block.transactionsRoot": {
+      "description": "The root of the transaction trie of the block",
+      "type": "object",
+      "fields": {}
+    },
+    "block.uncles": {
+      "description": "An array of uncle hashes",
+      "type": "object",
+      "fields": {}
+    },
+    "rlp": {
+      "description": "The RLP encoded header",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

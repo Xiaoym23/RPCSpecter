@@ -1,0 +1,29 @@
+{
+  "method_name": "getRecentPrioritizationFees",
+  "description": "Returns a list of prioritization fees from recent blocks",
+  "parameters": [
+    {
+      "name": "address",
+      "type": "array",
+      "description": "A collection of up to 128 Account addresses represented as base-58 encoded strings in an array",
+      "sub_parameters": []
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "",
+      "type": "object",
+      "fields": {}
+    },
+    "result.prioritizationFee": {
+      "description": "The prioritization fee value",
+      "type": "object",
+      "fields": {}
+    },
+    "result.slot": {
+      "description": "The slot number associated with the prioritization fee",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

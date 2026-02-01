@@ -1,0 +1,38 @@
+{
+  "method_name": "requestAirdrop",
+  "description": "Requests an airdrop of lamports to a Pubkey (does not work on mainnet-beta).",
+  "parameters": [
+    {
+      "name": "pubkey",
+      "type": "string",
+      "description": "The Pubkey of account to receive lamports, as a base-58 encoded string",
+      "sub_parameters": []
+    },
+    {
+      "name": "lamports",
+      "type": "integer",
+      "description": "The lamports to airdrop, as a u64",
+      "sub_parameters": []
+    },
+    {
+      "name": "object",
+      "type": "object",
+      "description": "The configuration object with the following fields:",
+      "sub_parameters": [
+        {
+          "name": "commitment",
+          "type": "string",
+          "description": "The level of commitment required for the query. The options include:",
+          "sub_parameters": []
+        }
+      ]
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "The transaction signature of the airdrop, as a base-58 encoded string",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

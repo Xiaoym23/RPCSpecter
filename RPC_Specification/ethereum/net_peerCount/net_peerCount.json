@@ -1,0 +1,12 @@
+{
+  "method_name": "net_peerCount",
+  "description": "Returns number of peers currently connected to the client.",
+  "parameters": [],
+  "returns": {
+    "result": {
+      "description": "The integer of the number of connected peers encoded as hexadecimal",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

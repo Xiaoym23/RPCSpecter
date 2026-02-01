@@ -1,0 +1,155 @@
+{
+  "method_name": "eth_getBlockByHash",
+  "description": "Returns information of the block matching the given block hash.",
+  "parameters": [
+    {
+      "name": "hash",
+      "type": "string",
+      "description": "The hash (32 bytes) of the block",
+      "sub_parameters": []
+    },
+    {
+      "name": "transaction_detail_flag",
+      "type": "boolean",
+      "description": "It returns the full transaction objects when it is true otherwise it returns only the hashes of the transactions",
+      "sub_parameters": []
+    }
+  ],
+  "returns": {
+    "object": {
+      "description": "A block object, or null when no block was found",
+      "type": "object",
+      "fields": {}
+    },
+    "object.baseFeePerGas": {
+      "description": "A string of the base fee encoded in hexadecimal format. Please note that this response field will not be included in a block requested before the EIP-1559 upgrade",
+      "type": "object",
+      "fields": {}
+    },
+    "object.difficulty": {
+      "description": "The integer of the difficulty for this block encoded as a hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "object.extraData": {
+      "description": "The “extra data” field of this block",
+      "type": "object",
+      "fields": {}
+    },
+    "object.gasLimit": {
+      "description": "The maximum gas allowed in this block encoded as a hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "object.gasUsed": {
+      "description": "The total used gas by all transactions in this block encoded as a hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "object.hash": {
+      "description": "The block hash of the requested block. null if pending",
+      "type": "object",
+      "fields": {}
+    },
+    "object.logsBloom": {
+      "description": "The bloom filter for the logs of the block. null if pending",
+      "type": "object",
+      "fields": {}
+    },
+    "object.miner": {
+      "description": "The address of the beneficiary to whom the mining rewards were given",
+      "type": "object",
+      "fields": {}
+    },
+    "object.mixHash": {
+      "description": "A string of a 256-bit hash encoded as a hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "object.nonce": {
+      "description": "The hash of the generated proof-of-work. null if pending",
+      "type": "object",
+      "fields": {}
+    },
+    "object.number": {
+      "description": "The block number of the requested block encoded as a hexadecimal. null if pending",
+      "type": "object",
+      "fields": {}
+    },
+    "object.parentHash": {
+      "description": "The hash of the parent block",
+      "type": "object",
+      "fields": {}
+    },
+    "object.receiptsRoot": {
+      "description": "The root of the receipts trie of the block",
+      "type": "object",
+      "fields": {}
+    },
+    "object.sha3Uncles": {
+      "description": "The SHA3 of the uncles data in the block",
+      "type": "object",
+      "fields": {}
+    },
+    "object.size": {
+      "description": "The size of this block in bytes as an Integer value encoded as hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "object.stateRoot": {
+      "description": "The root of the final state trie of the block",
+      "type": "object",
+      "fields": {}
+    },
+    "object.timestamp": {
+      "description": "The unix timestamp for when the block was collated",
+      "type": "object",
+      "fields": {}
+    },
+    "object.transactions": {
+      "description": "An array of transaction objects - please see eth_getTransactionByHash for exact shape",
+      "type": "object",
+      "fields": {}
+    },
+    "object.transactionsRoot": {
+      "description": "The root of the transaction trie of the block",
+      "type": "object",
+      "fields": {}
+    },
+    "object.uncles": {
+      "description": "An array of uncle hashes",
+      "type": "object",
+      "fields": {}
+    },
+    "object.withdrawals": {
+      "description": "A withdrawals object contains information about withdrawals made by validators. Please note that this field will not be included in a block requested before the EIP-4895 upgrade",
+      "type": "object",
+      "fields": {}
+    },
+    "object.withdrawals.index": {
+      "description": "The index of the withdrawal to uniquely identify each withdrawal",
+      "type": "object",
+      "fields": {}
+    },
+    "object.withdrawals.validatorIndex": {
+      "description": "The index of the validator who initiated the withdrawal",
+      "type": "object",
+      "fields": {}
+    },
+    "object.withdrawals.address": {
+      "description": "The address to which the withdrawn amount is sent",
+      "type": "object",
+      "fields": {}
+    },
+    "object.withdrawals.amount": {
+      "description": "The amount of ether, provided in hexadecimal format, corresponding to a certain value in gwei",
+      "type": "object",
+      "fields": {}
+    },
+    "object.withdrawalsRoot": {
+      "description": "The Merkle root of withdrawal data. Also, please note that this field will not be included in a block requested before the EIP-4895 upgrade",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

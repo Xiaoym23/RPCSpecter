@@ -1,0 +1,12 @@
+{
+  "method_name": "getMaxRetransmitSlot",
+  "description": "Get the max slot seen from retransmit stage.",
+  "parameters": [],
+  "returns": {
+    "result": {
+      "description": "The slot number encoded as u64, 64-bit unsigned integer",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

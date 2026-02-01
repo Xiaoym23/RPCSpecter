@@ -1,0 +1,324 @@
+{
+  "method_name": "eth_simulateV1",
+  "description": "Simulates a series of transactions at a specific block height with optional state overrides. This method allows you to test transactions with custom block and state parameters without actually submitting them to the network.",
+  "parameters": [
+    {
+      "name": "object",
+      "type": "object",
+      "description": "The simulation request object",
+      "sub_parameters": [
+        {
+          "name": "blockStateCalls",
+          "type": "array",
+          "description": "Array of block state call objects",
+          "sub_parameters": [
+            {
+              "name": "blockOverrides",
+              "type": "object",
+              "description": "(Optional) An object to override block-level parameters",
+              "sub_parameters": [
+                {
+                  "name": "baseFeePerGas",
+                  "type": "string",
+                  "description": "The base fee per gas for the block, encoded as hexadecimal",
+                  "sub_parameters": []
+                }
+              ]
+            },
+            {
+              "name": "stateOverrides",
+              "type": "object",
+              "description": "(Optional) An object to override account states",
+              "sub_parameters": [
+                {
+                  "name": "address",
+                  "type": "object",
+                  "description": "The address of the account to override",
+                  "sub_parameters": [
+                    {
+                      "name": "balance",
+                      "type": "string",
+                      "description": "(Optional) The balance to set for the account, encoded as hexadecimal",
+                      "sub_parameters": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "calls",
+              "type": "array",
+              "description": "Array of transaction call objects",
+              "sub_parameters": [
+                {
+                  "name": "from",
+                  "type": "string",
+                  "description": "The address from which the transaction is sent",
+                  "sub_parameters": []
+                },
+                {
+                  "name": "to",
+                  "type": "string",
+                  "description": "The address to which the transaction is directed",
+                  "sub_parameters": []
+                },
+                {
+                  "name": "maxFeePerGas",
+                  "type": "string",
+                  "description": "(Optional) The maximum fee per gas the sender is willing to pay",
+                  "sub_parameters": []
+                },
+                {
+                  "name": "value",
+                  "type": "string",
+                  "description": "(Optional) The value sent with the transaction, encoded as hexadecimal",
+                  "sub_parameters": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "validation",
+          "type": "boolean",
+          "description": "(Optional) A boolean indicating whether to perform validation checks",
+          "sub_parameters": []
+        },
+        {
+          "name": "traceTransfers",
+          "type": "boolean",
+          "description": "(Optional) A boolean indicating whether to trace value transfers",
+          "sub_parameters": []
+        }
+      ]
+    },
+    {
+      "name": "blockParameter",
+      "type": "string",
+      "description": "The block number, hash, or tag (earliest, finalized, latest, pending, safe)",
+      "sub_parameters": []
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "Array of simulation results",
+      "type": "object",
+      "fields": {}
+    },
+    "result.baseFeePerGas": {
+      "description": "Base fee per gas in hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "result.blobGasUsed": {
+      "description": "Amount of blob gas used in hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "result.calls": {
+      "description": "Array of call results",
+      "type": "object",
+      "fields": {}
+    },
+    "result.calls.returnData": {
+      "description": "Return data from the call in hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "result.calls.logs": {
+      "description": "Array of logs generated during the call",
+      "type": "object",
+      "fields": {}
+    },
+    "result.calls.logs.address": {
+      "description": "Address of the contract that generated the log",
+      "type": "object",
+      "fields": {}
+    },
+    "result.calls.logs.topics": {
+      "description": "Array of indexed log parameters",
+      "type": "object",
+      "fields": {}
+    },
+    "result.calls.logs.data": {
+      "description": "Contains non-indexed log parameters",
+      "type": "object",
+      "fields": {}
+    },
+    "result.calls.logs.blockNumber": {
+      "description": "Block number in hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "result.calls.logs.transactionHash": {
+      "description": "Hash of the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "result.calls.logs.transactionIndex": {
+      "description": "Index of the transaction in the block",
+      "type": "object",
+      "fields": {}
+    },
+    "result.calls.logs.blockHash": {
+      "description": "Hash of the block",
+      "type": "object",
+      "fields": {}
+    },
+    "result.calls.logs.logIndex": {
+      "description": "Index of the log in the block",
+      "type": "object",
+      "fields": {}
+    },
+    "result.calls.logs.removed": {
+      "description": "Whether the log was removed due to chain reorganization",
+      "type": "object",
+      "fields": {}
+    },
+    "result.calls.gasUsed": {
+      "description": "Amount of gas used in hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "result.calls.status": {
+      "description": "Status code of the call in hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "result.calls.error": {
+      "description": "An object array containing error information",
+      "type": "object",
+      "fields": {}
+    },
+    "result.calls.error.message": {
+      "description": "An error message",
+      "type": "object",
+      "fields": {}
+    },
+    "result.calls.error.code": {
+      "description": "An error status code",
+      "type": "object",
+      "fields": {}
+    },
+    "result.calls.error.data": {
+      "description": "A data field containing error related information",
+      "type": "object",
+      "fields": {}
+    },
+    "result.difficulty": {
+      "description": "Block difficulty in hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "result.excessBlobGas": {
+      "description": "Excess blob gas in hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "result.extraData": {
+      "description": "Extra data field in hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "result.gasLimit": {
+      "description": "Gas limit in hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "result.gasUsed": {
+      "description": "Gas used in hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "result.hash": {
+      "description": "Block hash",
+      "type": "object",
+      "fields": {}
+    },
+    "result.logsBloom": {
+      "description": "Logs bloom filter in hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "result.miner": {
+      "description": "Miner/validator address",
+      "type": "object",
+      "fields": {}
+    },
+    "result.mixHash": {
+      "description": "Mix hash in hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "result.nonce": {
+      "description": "Nonce in hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "result.number": {
+      "description": "Block number in hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "result.parentBeaconBlockRoot": {
+      "description": "Parent beacon block root in hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "result.parentHash": {
+      "description": "Parent block hash",
+      "type": "object",
+      "fields": {}
+    },
+    "result.receiptsRoot": {
+      "description": "Receipts trie root in hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "result.sha3Uncles": {
+      "description": "Uncle blocks hash in hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "result.size": {
+      "description": "Block size in hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "result.stateRoot": {
+      "description": "State trie root in hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "result.timestamp": {
+      "description": "Block timestamp in hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transactions": {
+      "description": "Array of transaction hashes",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transactionsRoot": {
+      "description": "Transactions trie root in hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "result.uncles": {
+      "description": "Array of uncle block hashes",
+      "type": "object",
+      "fields": {}
+    },
+    "result.withdrawals": {
+      "description": "Array of withdrawal objects",
+      "type": "object",
+      "fields": {}
+    },
+    "result.withdrawalsRoot": {
+      "description": "Withdrawals trie root in hexadecimal",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

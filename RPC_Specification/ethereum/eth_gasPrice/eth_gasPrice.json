@@ -1,0 +1,12 @@
+{
+  "method_name": "eth_gasPrice",
+  "description": "Returns the current gas price on the network in wei.",
+  "parameters": [],
+  "returns": {
+    "result": {
+      "description": "The hexadecimal value of the current gas price in wei",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

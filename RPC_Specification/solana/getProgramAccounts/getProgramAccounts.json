@@ -1,0 +1,121 @@
+{
+  "method_name": "getProgramAccounts",
+  "description": "Returns all accounts owned by the provided program Pubkey.",
+  "parameters": [
+    {
+      "name": "pubkey",
+      "type": "string",
+      "description": "The Pubkey of program encoded as base-58 string",
+      "sub_parameters": []
+    },
+    {
+      "name": "object",
+      "type": "object",
+      "description": "The configuration object with the following fields:",
+      "sub_parameters": [
+        {
+          "name": "commitment",
+          "type": "string",
+          "description": "The level of commitment required for the query. The options include:",
+          "sub_parameters": [
+            {
+              "name": "finalized",
+              "type": "string",
+              "description": "The node will query the most recent block confirmed by the supermajority of the cluster as having reached maximum lockout, meaning the cluster has recognized this block as finalized",
+              "sub_parameters": []
+            },
+            {
+              "name": "confirmed",
+              "type": "string",
+              "description": "The node will query the most recent block that has been voted on by the supermajority of the cluster",
+              "sub_parameters": []
+            },
+            {
+              "name": "processed",
+              "type": "string",
+              "description": "The node will query its most recent block. Note that the block may not be complete",
+              "sub_parameters": []
+            }
+          ]
+        },
+        {
+          "name": "minContextSlot",
+          "type": "integer",
+          "description": "The minimum slot at which the request can be evaluated",
+          "sub_parameters": []
+        },
+        {
+          "name": "withContext",
+          "type": "boolean",
+          "description": "Wraps the result in a RpcResponse JSON object",
+          "sub_parameters": []
+        },
+        {
+          "name": "filters",
+          "type": "array",
+          "description": "Filter results using up to 4 filter objects. See Filtering",
+          "sub_parameters": []
+        },
+        {
+          "name": "dataSlice",
+          "type": "string",
+          "description": "Request a slice of the account's data: length (): number of bytes to return. offset (): byte offset from which to start reading. Data slicing is only available for 'base58', 'base64', or 'base64+zstd' encodings.",
+          "sub_parameters": []
+        },
+        {
+          "name": "encoding",
+          "type": "string",
+          "description": "(Default: binary) Encoding format for the returned account data. Explicitly setting this field is recommended to avoid size or performance issues. Valid options include 'base58', 'base64', 'binary', 'base64+zstd', and 'jsonParsed' (valid for certain native programs).",
+          "sub_parameters": []
+        }
+      ]
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "The result will be RpcResponse JSON object with the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.pubkey": {
+      "description": "The public key of the node encoded as base-58 string",
+      "type": "object",
+      "fields": {}
+    },
+    "result.account": {
+      "description": "A JSON object with the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.account.lamports": {
+      "description": "The number of lamports assigned to this account as u64 (64-bit unsigned integer)",
+      "type": "object",
+      "fields": {}
+    },
+    "result.account.owner": {
+      "description": "The base-58 encoded Pubkey of the program this account has been assigned to",
+      "type": "object",
+      "fields": {}
+    },
+    "result.account.data": {
+      "description": "Data associated with the account. Format depends on encoding parameter:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.account.executable": {
+      "description": "A boolean indicating if the account contains a program (and is strictly read-only)",
+      "type": "object",
+      "fields": {}
+    },
+    "result.account.rentEpoch": {
+      "description": "The epoch at which this account will next owe rent, as u64 (64-bit unsigned integer)",
+      "type": "object",
+      "fields": {}
+    },
+    "result.account.space": {
+      "description": "The amount of storage space required to store the token account",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

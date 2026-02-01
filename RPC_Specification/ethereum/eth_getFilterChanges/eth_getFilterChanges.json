@@ -1,0 +1,89 @@
+{
+  "method_name": "eth_getFilterChanges",
+  "description": "Polling method for a filter, which returns an array of events that have occurred since the last poll.",
+  "parameters": [
+    {
+      "name": "filterID",
+      "type": "string",
+      "description": "The filter id that is returned from eth_newFilter, eth_newBlockFilter or eth_newPendingTransactionFilter",
+      "sub_parameters": []
+    }
+  ],
+  "returns": {
+    "array": {
+      "description": "An array of one of the following, depending on the filter type, or empty if there were no changes since the last poll:",
+      "type": "object",
+      "fields": {}
+    },
+    "array.eth_newBlockFilter": {
+      "description": "",
+      "type": "object",
+      "fields": {}
+    },
+    "array.eth_newBlockFilter.blockHash": {
+      "description": "The 32 byte hash of a block that meets your filter requirements",
+      "type": "object",
+      "fields": {}
+    },
+    "array.eth_newPendingTransactionFilter": {
+      "description": "",
+      "type": "object",
+      "fields": {}
+    },
+    "array.eth_newPendingTransactionFilter.transactionHash": {
+      "description": "The 32 byte hash of a transaction that meets your filter requirements",
+      "type": "object",
+      "fields": {}
+    },
+    "array.eth_newFilter": {
+      "description": "The 32 byte hash of a transaction that meets your filter requirements",
+      "type": "object",
+      "fields": {}
+    },
+    "array.eth_newFilter.address": {
+      "description": "An address from which this log originated",
+      "type": "object",
+      "fields": {}
+    },
+    "array.eth_newFilter.topics": {
+      "description": "An array of zero to four 32 Bytes DATA of indexed log arguments. In Solidity, the first topic is the hash of the signature of the event (e.g. Deposit(address, bytes32, uint256)), except you declare the event with the anonymous specifier",
+      "type": "object",
+      "fields": {}
+    },
+    "array.eth_newFilter.data": {
+      "description": "It contains one or more 32 Bytes non-indexed arguments of the log",
+      "type": "object",
+      "fields": {}
+    },
+    "array.eth_newFilter.blockNumber": {
+      "description": "The block number where this log was in. null when its a pending log",
+      "type": "object",
+      "fields": {}
+    },
+    "array.eth_newFilter.transactionHash": {
+      "description": "The hash of the transactions this log was created from. null when its a pending log",
+      "type": "object",
+      "fields": {}
+    },
+    "array.eth_newFilter.transactionIndex": {
+      "description": "The integer of the transaction's index position that the log was created from. null when it's a pending log",
+      "type": "object",
+      "fields": {}
+    },
+    "array.eth_newFilter.blockHash": {
+      "description": "The hash of the block where this log was in. null when its a pending log",
+      "type": "object",
+      "fields": {}
+    },
+    "array.eth_newFilter.logIndex": {
+      "description": "The integer of the log index position in the block. null when it's a pending log",
+      "type": "object",
+      "fields": {}
+    },
+    "array.eth_newFilter.removed": {
+      "description": "It is true when the log was removed due to a chain reorganization, and false if it's a valid log",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

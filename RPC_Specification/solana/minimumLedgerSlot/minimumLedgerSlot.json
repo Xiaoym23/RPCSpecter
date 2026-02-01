@@ -1,0 +1,12 @@
+{
+  "method_name": "minimumLedgerSlot",
+  "description": "Returns the lowest slot that the node has information of in its ledger.",
+  "parameters": [],
+  "returns": {
+    "u64": {
+      "description": "The lowest slot that the node has information of. This number may increase over time if the node is purging older ledger data",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

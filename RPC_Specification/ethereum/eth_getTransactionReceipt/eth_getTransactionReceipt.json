@@ -1,0 +1,134 @@
+{
+  "method_name": "eth_getTransactionReceipt",
+  "description": "Returns the receipt of a transaction by transaction hash.",
+  "parameters": [
+    {
+      "name": "hash",
+      "type": "string",
+      "description": "The hash of a transaction",
+      "sub_parameters": []
+    }
+  ],
+  "returns": {
+    "object": {
+      "description": "A transaction receipt object, or null when the transaction is not available",
+      "type": "object",
+      "fields": {}
+    },
+    "object.blockHash": {
+      "description": "The hash of the block where this transaction was in",
+      "type": "object",
+      "fields": {}
+    },
+    "object.blockNumber": {
+      "description": "The block number where this transaction was added encoded as a hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "object.contractAddress": {
+      "description": "The contract address created for contract creation, otherwise null",
+      "type": "object",
+      "fields": {}
+    },
+    "object.cumulativeGasUsed": {
+      "description": "The total gas used when this transaction was executed in the block",
+      "type": "object",
+      "fields": {}
+    },
+    "object.effectiveGasPrice": {
+      "description": "The total base charge plus tip paid for each unit of gas",
+      "type": "object",
+      "fields": {}
+    },
+    "object.from": {
+      "description": "The address of the sender",
+      "type": "object",
+      "fields": {}
+    },
+    "object.gasUsed": {
+      "description": "The amount of gas used by this specific transaction alone",
+      "type": "object",
+      "fields": {}
+    },
+    "object.logs": {
+      "description": "An array of log objects that generated this transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "object.logs.address": {
+      "description": "The address from which this log was generated",
+      "type": "object",
+      "fields": {}
+    },
+    "object.logs.topics": {
+      "description": "An array of zero to four 32 Bytes DATA of indexed log arguments. In Solidity, the first topic is the hash of the signature of the event (e.g. Deposit(address, bytes32, uint256)), except you declare the event with the anonymous specifier",
+      "type": "object",
+      "fields": {}
+    },
+    "object.logs.data": {
+      "description": "The 32 byte non-indexed argument of the log",
+      "type": "object",
+      "fields": {}
+    },
+    "object.logs.blockNumber": {
+      "description": "The block number where this log was in",
+      "type": "object",
+      "fields": {}
+    },
+    "object.logs.transactionHash": {
+      "description": "The hash of the transaction from which this log was created from. null if the log is pending",
+      "type": "object",
+      "fields": {}
+    },
+    "object.logs.transactionIndex": {
+      "description": "The transactions index position from which this log was created from. null if the log is pending",
+      "type": "object",
+      "fields": {}
+    },
+    "object.logs.blockHash": {
+      "description": "The hash of the block where this log was in",
+      "type": "object",
+      "fields": {}
+    },
+    "object.logs.logIndex": {
+      "description": "The integer of log index position in the block encoded as hexadecimal. null if the log is pending",
+      "type": "object",
+      "fields": {}
+    },
+    "object.logs.removed": {
+      "description": "It is true if log was removed, due to a chain reorganization and false if it's a valid log",
+      "type": "object",
+      "fields": {}
+    },
+    "object.logsBloom": {
+      "description": "The bloom filter which is used to retrive related logs",
+      "type": "object",
+      "fields": {}
+    },
+    "object.status": {
+      "description": "It is either 1 (success) or 0 (failure) encoded as a hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "object.to": {
+      "description": "The address of the receiver. Null when its a contract creation transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "object.transactionHash": {
+      "description": "The hash of the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "object.transactionIndex": {
+      "description": "The transactions index position in the block encoded as a hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "object.type": {
+      "description": "The type of value",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

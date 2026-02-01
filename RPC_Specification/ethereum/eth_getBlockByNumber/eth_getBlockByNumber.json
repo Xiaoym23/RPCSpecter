@@ -1,0 +1,125 @@
+{
+  "method_name": "eth_getBlockByNumber",
+  "description": "Returns information of the block matching the given block number.",
+  "parameters": [
+    {
+      "name": "blockNumber",
+      "type": "string",
+      "description": "The block number in hexadecimal format or the string latest, earliest, pending, safe or finalized",
+      "sub_parameters": []
+    },
+    {
+      "name": "transaction_detail_flag",
+      "type": "",
+      "description": "The method returns the full transaction objects when this value is true otherwise, it returns only the hashes of the transactions",
+      "sub_parameters": []
+    }
+  ],
+  "returns": {
+    "object": {
+      "description": "A block object, or null when no block was found. The block object contains the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "object.baseFeePerGas": {
+      "description": "A string of the base fee encoded in hexadecimal format. Please note that this response field will not be included in a block requested before the EIP-1559 upgrade",
+      "type": "object",
+      "fields": {}
+    },
+    "object.difficulty": {
+      "description": "The integer of the difficulty for this block encoded as a hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "object.extraData": {
+      "description": "The “extra data” field of this block",
+      "type": "object",
+      "fields": {}
+    },
+    "object.gasLimit": {
+      "description": "The maximum gas allowed in this block encoded as a hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "object.gasUsed": {
+      "description": "The total used gas by all transactions in this block encoded as a hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "object.hash": {
+      "description": "The block hash of the requested block. null if pending",
+      "type": "object",
+      "fields": {}
+    },
+    "object.logsBloom": {
+      "description": "The bloom filter for the logs of the block. null if pending",
+      "type": "object",
+      "fields": {}
+    },
+    "object.miner": {
+      "description": "The address of the beneficiary to whom the mining rewards were given",
+      "type": "object",
+      "fields": {}
+    },
+    "object.mixHash": {
+      "description": "A string of a 256-bit hash encoded as a hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "object.nonce": {
+      "description": "The hash of the generated proof-of-work. null if pending",
+      "type": "object",
+      "fields": {}
+    },
+    "object.number": {
+      "description": "The block number of the requested block encoded as hexadecimal. null if pending",
+      "type": "object",
+      "fields": {}
+    },
+    "object.parentHash": {
+      "description": "The hash of the parent block",
+      "type": "object",
+      "fields": {}
+    },
+    "object.receiptsRoot": {
+      "description": "The root of the receipts trie of the block",
+      "type": "object",
+      "fields": {}
+    },
+    "object.sha3Uncles": {
+      "description": "The SHA3 of the uncles data in the block",
+      "type": "object",
+      "fields": {}
+    },
+    "object.size": {
+      "description": "The size of this block in bytes as an Integer value encoded as hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "object.stateRoot": {
+      "description": "The root of the final state trie of the block",
+      "type": "object",
+      "fields": {}
+    },
+    "object.timestamp": {
+      "description": "The UNIX timestamp for when the block was collated",
+      "type": "object",
+      "fields": {}
+    },
+    "object.transactions": {
+      "description": "An array of transaction objects - please see eth_getTransactionByHash for exact shape",
+      "type": "object",
+      "fields": {}
+    },
+    "object.transactionsRoot": {
+      "description": "The root of the transaction trie of the block",
+      "type": "object",
+      "fields": {}
+    },
+    "object.uncles": {
+      "description": "An array of uncle hashes",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

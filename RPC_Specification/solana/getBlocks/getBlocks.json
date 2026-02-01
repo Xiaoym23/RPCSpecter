@@ -1,0 +1,38 @@
+{
+  "method_name": "getBlocks",
+  "description": "Returns a list of confirmed blocks between two slots.",
+  "parameters": [
+    {
+      "name": "start_slot",
+      "type": "string",
+      "description": "The start slot encoded as an u64 integer",
+      "sub_parameters": []
+    },
+    {
+      "name": "end_slot",
+      "type": "string",
+      "description": "The end slot encoded as an u64 integer",
+      "sub_parameters": []
+    },
+    {
+      "name": "object",
+      "type": "object",
+      "description": "The configuration object with the following fields:",
+      "sub_parameters": [
+        {
+          "name": "commitment",
+          "type": "string",
+          "description": "The level of commitment required for the query. It can be one of:",
+          "sub_parameters": []
+        }
+      ]
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "An array of u64 integers representing confirmed blocks within the specified start_slot to end_slot range.",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

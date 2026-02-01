@@ -1,0 +1,177 @@
+{
+  "method_name": "debug_traceCall",
+  "description": "Returns the number of possible tracing result by executing an eth call within the context of the given block execution.",
+  "parameters": [
+    {
+      "name": "object",
+      "type": "array",
+      "description": "The transaction call object with the following fields:",
+      "sub_parameters": [
+        {
+          "name": "from",
+          "type": "string",
+          "description": "The address the transaction is sent from",
+          "sub_parameters": []
+        },
+        {
+          "name": "to",
+          "type": "string",
+          "description": "The address the transaction is directed to",
+          "sub_parameters": []
+        },
+        {
+          "name": "gas",
+          "type": "integer",
+          "description": "The integer of the gas provided for the transaction execution",
+          "sub_parameters": []
+        },
+        {
+          "name": "gasPrice",
+          "type": "integer",
+          "description": "The integer of the gasPrice used for each paid gas",
+          "sub_parameters": []
+        },
+        {
+          "name": "value",
+          "type": "integer",
+          "description": "The integer of the value sent with this transaction",
+          "sub_parameters": []
+        },
+        {
+          "name": "data",
+          "type": "string",
+          "description": "The hash of the method signature and encoded parameters",
+          "sub_parameters": []
+        }
+      ]
+    },
+    {
+      "name": "blockReference",
+      "type": "string",
+      "description": "The block number in hexadecimal format, the block hash, or tags. The supported tag values include earliest for the earliest/genesis block, latest for the latest mined block, pending for the pending state/transactions, safe for the most recent secure block, and finalized for the most recent secure block accepted by more than 2/3 of validators. safe and finalized are only supported on Ethereum, Gnosis, Arbitrum, Arbitrum Nova, and Avalanche C-chain",
+      "sub_parameters": []
+    },
+    {
+      "name": "object",
+      "type": "array",
+      "description": "The tracer object with the following fields:",
+      "sub_parameters": [
+        {
+          "name": "tracer",
+          "type": "string",
+          "description": "The type of tracer. It could be callTracer or prestateTracer",
+          "sub_parameters": [
+            {
+              "name": "callTracer",
+              "type": "string",
+              "description": "The calltracer keeps track of all call frames, including depth 0 calls, that are made during a transaction",
+              "sub_parameters": []
+            },
+            {
+              "name": "prestateTracer",
+              "type": "string",
+              "description": "The prestateTracer replays the transaction and tracks every part of state that occured during the transaction",
+              "sub_parameters": []
+            }
+          ]
+        },
+        {
+          "name": "tracerConfig",
+          "type": "object",
+          "description": "The object to specify the configurations of the tracer",
+          "sub_parameters": [
+            {
+              "name": "onlyTopCall",
+              "type": "boolean",
+              "description": "When set to true, this will only trace the primary (top-level) call and not any sub-calls. It eliminates the additional processing for each call frame",
+              "sub_parameters": []
+            },
+            {
+              "name": "diffMode",
+              "type": "boolean",
+              "description": "When set to true, diff mode returns the differences between the transaction's pre and post-state. The result object will contain a pre and a post object.",
+              "sub_parameters": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "The transaction trace object, which has the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.failed": {
+      "description": "The transaction is successful or not",
+      "type": "object",
+      "fields": {}
+    },
+    "result.gas": {
+      "description": "The total consumed gas in the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "result.returnValue": {
+      "description": "The return value of the executed contract call",
+      "type": "object",
+      "fields": {}
+    },
+    "result.structLogs": {
+      "description": "The trace result of each step with the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.structLogs.pc": {
+      "description": "The current index in bytecode",
+      "type": "object",
+      "fields": {}
+    },
+    "result.structLogs.op": {
+      "description": "The name of current executing operation",
+      "type": "object",
+      "fields": {}
+    },
+    "result.structLogs.gas": {
+      "description": "The available gas in the execution",
+      "type": "object",
+      "fields": {}
+    },
+    "result.structLogs.gasCost": {
+      "description": "The gas cost of the operation",
+      "type": "object",
+      "fields": {}
+    },
+    "result.structLogs.depth": {
+      "description": "The number of levels of calling functions",
+      "type": "object",
+      "fields": {}
+    },
+    "result.structLogs.error": {
+      "description": "The error of the execution",
+      "type": "object",
+      "fields": {}
+    },
+    "result.structLogs.stack": {
+      "description": "An array of values in the current stack",
+      "type": "object",
+      "fields": {}
+    },
+    "result.structLogs.memory": {
+      "description": "An array of values in the current memory",
+      "type": "object",
+      "fields": {}
+    },
+    "result.structLogs.storage": {
+      "description": "The mapping of the current storage",
+      "type": "object",
+      "fields": {}
+    },
+    "result.structLogs.refund": {
+      "description": "The total of current refund value",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

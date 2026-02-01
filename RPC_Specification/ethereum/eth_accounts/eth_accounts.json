@@ -1,0 +1,12 @@
+{
+  "method_name": "eth_accounts",
+  "description": "Returns an array of addresses owned by the client. Since Quicknode does not store private keys, this will always return an empty response.",
+  "parameters": [],
+  "returns": {
+    "result": {
+      "description": "An array of addresses owned by the client",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

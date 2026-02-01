@@ -1,0 +1,172 @@
+{
+  "method_name": "trace_call",
+  "description": "Executes a new message call and returns a number of possible traces (Supported on Erigon).",
+  "parameters": [
+    {
+      "name": "object",
+      "type": "array",
+      "description": "The transaction call object which contains the following fields:",
+      "sub_parameters": [
+        {
+          "name": "from",
+          "type": "string",
+          "description": "The string of the address the transaction is sent from",
+          "sub_parameters": []
+        },
+        {
+          "name": "to",
+          "type": "string",
+          "description": "The string of the address to the transaction is directed to",
+          "sub_parameters": []
+        },
+        {
+          "name": "gas",
+          "type": "integer",
+          "description": "The integer of the gas provided for the transaction execution",
+          "sub_parameters": []
+        },
+        {
+          "name": "gasPrice",
+          "type": "integer",
+          "description": "The integer of the gasPrice used for each paid gas encoded as hexadecimal",
+          "sub_parameters": []
+        },
+        {
+          "name": "value",
+          "type": "integer",
+          "description": "The integer of the value sent with this transaction encoded as hexadecimal",
+          "sub_parameters": []
+        },
+        {
+          "name": "data",
+          "type": "string",
+          "description": "The string of the hash of the method signature and encoded parameters, see the Ethereum Contract ABI",
+          "sub_parameters": []
+        }
+      ]
+    },
+    {
+      "name": "array",
+      "type": "array",
+      "description": "The type of trace, which can be one of the following:",
+      "sub_parameters": [
+        {
+          "name": "vmTrace",
+          "type": "string",
+          "description": "To get a full trace of the virtual machine's state during the execution of the given of given transaction, including for any subcells",
+          "sub_parameters": []
+        },
+        {
+          "name": "trace",
+          "type": "string",
+          "description": "To get the basic trace of the given transaction",
+          "sub_parameters": []
+        },
+        {
+          "name": "stateDiff",
+          "type": "string",
+          "description": "To get information on altered Ethereum state due to execution of the given transaction",
+          "sub_parameters": []
+        }
+      ]
+    },
+    {
+      "name": "blockNumber",
+      "type": "string",
+      "description": "The block number as a string in hexadecimal format or tags. The supported tag values include earliest for the earliest/genesis block, latest for the latest mined block, pending for the pending state/transactions, safe for the most recent secure block, and finalized for the most recent secure block accepted by more than 2/3 of validators. safe and finalized are only supported on Ethereum and Gnosis",
+      "sub_parameters": []
+    }
+  ],
+  "returns": {
+    "array": {
+      "description": "The block traces, which have the following fields (please note that all return types are hexadecimal representations of their data type unless otherwise stated):",
+      "type": "object",
+      "fields": {}
+    },
+    "array.output": {
+      "description": "The data which is returned as an output encoded in hexadecimal format",
+      "type": "object",
+      "fields": {}
+    },
+    "array.stateDiff": {
+      "description": "It returns the information on altered Ethereum state due to execution of the given transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "array.trace": {
+      "description": "It is used to retrieve the basic trace of the given information",
+      "type": "object",
+      "fields": {}
+    },
+    "array.trace.action": {
+      "description": "The action to be performed on the receiver id:",
+      "type": "object",
+      "fields": {}
+    },
+    "array.trace.action.from": {
+      "description": "The address of the sender",
+      "type": "object",
+      "fields": {}
+    },
+    "array.trace.action.callType": {
+      "description": "The type of method such as call, delegatecall",
+      "type": "object",
+      "fields": {}
+    },
+    "array.trace.action.gas": {
+      "description": "The gas provided by the sender, encoded as hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "array.trace.action.input": {
+      "description": "The data sent along with the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "array.trace.action.to": {
+      "description": "The address of the receiver",
+      "type": "object",
+      "fields": {}
+    },
+    "array.trace.action.value": {
+      "description": "The integer of the value sent with this transaction, encoded as hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "array.trace.result": {
+      "description": "The integer of the gas price used encoded as hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "array.trace.result.gasUsed": {
+      "description": "The amount of gas used by this specific transaction alone",
+      "type": "object",
+      "fields": {}
+    },
+    "array.trace.result.output": {
+      "description": "The value returned by the contract call, and it only contains the actual value sent by the RETURN method. If the RETURN method was not executed, the output is empty bytes",
+      "type": "object",
+      "fields": {}
+    },
+    "array.trace.subtraces": {
+      "description": "The traces of contract calls made by the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "array.trace.traceAddress": {
+      "description": "The list of addresses where the call executed, the address of the parents and the order of the current sub call",
+      "type": "object",
+      "fields": {}
+    },
+    "array.trace.type": {
+      "description": "The value of the method such as call or create",
+      "type": "object",
+      "fields": {}
+    },
+    "array.vmTrace": {
+      "description": "It is used to get a full trace of the virtual machine's state during the execution of the given transaction, including for any sub-calls",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

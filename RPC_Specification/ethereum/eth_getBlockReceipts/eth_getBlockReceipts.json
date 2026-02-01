@@ -1,0 +1,134 @@
+{
+  "method_name": "eth_getBlockReceipts",
+  "description": "Returns all transaction receipts for a given block.",
+  "parameters": [
+    {
+      "name": "blockNumber",
+      "type": "string",
+      "description": "The block number in hexadecimal format or the string latest, earliest, pending, safe or finalized (safe and finalized tags are only supported on Ethereum, Gnosis, Arbitrum and Arbitrum Nova), see the default block parameter description in the official Ethereum documentation",
+      "sub_parameters": []
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "An array of objects",
+      "type": "object",
+      "fields": {}
+    },
+    "result.blockHash": {
+      "description": "The hash of the block. null when pending",
+      "type": "object",
+      "fields": {}
+    },
+    "result.blockNumber": {
+      "description": "The block number",
+      "type": "object",
+      "fields": {}
+    },
+    "result.contractAddress": {
+      "description": "The contract address created if the transaction was a contract creation, otherwise null",
+      "type": "object",
+      "fields": {}
+    },
+    "result.cumulativeGasUsed": {
+      "description": "The total amount of gas used when this transaction was executed in the block",
+      "type": "object",
+      "fields": {}
+    },
+    "result.effectiveGasPrice": {
+      "description": "The actual value per gas deducted from the sender account",
+      "type": "object",
+      "fields": {}
+    },
+    "result.from": {
+      "description": "The address of the sender",
+      "type": "object",
+      "fields": {}
+    },
+    "result.gasUsed": {
+      "description": "The amount of gas used by this specific transaction alone",
+      "type": "object",
+      "fields": {}
+    },
+    "result.logs": {
+      "description": "An array of log objects that generated this transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "result.logs.address": {
+      "description": "An address from which this log originated",
+      "type": "object",
+      "fields": {}
+    },
+    "result.logs.topics": {
+      "description": "An array of zero to four 32 Bytes DATA of indexed log arguments. In Solidity, the first topic is the hash of the signature of the event (e.g. Deposit(address, bytes32, uint256)), except you declare the event with the anonymous specifier",
+      "type": "object",
+      "fields": {}
+    },
+    "result.logs.data": {
+      "description": "It contains one or more 32 Bytes non-indexed arguments of the log",
+      "type": "object",
+      "fields": {}
+    },
+    "result.logs.blockNumber": {
+      "description": "The block number where this log was in. null when its a pending log",
+      "type": "object",
+      "fields": {}
+    },
+    "result.logs.transactionHash": {
+      "description": "The hash of the transactions this log was created from. null when its a pending log",
+      "type": "object",
+      "fields": {}
+    },
+    "result.logs.transactionIndex": {
+      "description": "The integer of the transaction's index position that the log was created from. null when it's a pending log",
+      "type": "object",
+      "fields": {}
+    },
+    "result.logs.blockHash": {
+      "description": "The hash of the block where this log was in. null when its a pending log",
+      "type": "object",
+      "fields": {}
+    },
+    "result.logs.logIndex": {
+      "description": "The integer of the log index position in the block. null when its a pending log",
+      "type": "object",
+      "fields": {}
+    },
+    "result.logs.removed": {
+      "description": "It is true when the log was removed due to a chain reorganization, and false if it's a valid log",
+      "type": "object",
+      "fields": {}
+    },
+    "result.logsBloom": {
+      "description": "The bloom filter for light clients to quickly retrieve related logs",
+      "type": "object",
+      "fields": {}
+    },
+    "result.status": {
+      "description": "It is either 1 (success) or 0 (failure) encoded as a hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "result.to": {
+      "description": "The address of the receiver. null when it's a contract creation transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transactionHash": {
+      "description": "The hash of the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transactionIndex": {
+      "description": "An index of the transaction in the block",
+      "type": "object",
+      "fields": {}
+    },
+    "result.type": {
+      "description": "The value type",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

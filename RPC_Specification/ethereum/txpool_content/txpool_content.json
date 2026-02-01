@@ -1,0 +1,232 @@
+{
+  "method_name": "txpool_content",
+  "description": "Returns all pending and queued transactions (Supported only on Geth).",
+  "parameters": [],
+  "returns": {
+    "array": {
+      "description": "A list of pending and queued transactions, with each having the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "array.pending": {
+      "description": "An array of transaction objects, with following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "array.pending.address": {
+      "description": "The address initiating a transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "array.pending.address.nonce": {
+      "description": "The nonce of the sending address",
+      "type": "object",
+      "fields": {}
+    },
+    "array.pending.address.nonce.blockHash": {
+      "description": "The hash of the block where this transaction was in, null here",
+      "type": "object",
+      "fields": {}
+    },
+    "array.pending.address.nonce.blockNumber": {
+      "description": "The block number where this transaction was added encoded as a hexadecimal, null here",
+      "type": "object",
+      "fields": {}
+    },
+    "array.pending.address.nonce.from": {
+      "description": "The address of the sender",
+      "type": "object",
+      "fields": {}
+    },
+    "array.pending.address.nonce.gas": {
+      "description": "The total amount of gas units used in the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "array.pending.address.nonce.gasPrice": {
+      "description": "The total amount in wei the sender is willing to pay for the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "array.pending.address.nonce.maxFeePerGas": {
+      "description": "The maximum amount of gas willing to be paid for the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "array.pending.address.nonce.maxPriorityFeePerGas": {
+      "description": "The maximum amount of gas to be included as a tip to the miner",
+      "type": "object",
+      "fields": {}
+    },
+    "array.pending.address.nonce.hash": {
+      "description": "The hash of the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "array.pending.address.nonce.input": {
+      "description": "The encoded transaction input data",
+      "type": "object",
+      "fields": {}
+    },
+    "array.pending.address.nonce.nonce": {
+      "description": "The number of transactions the sender has sent till now",
+      "type": "object",
+      "fields": {}
+    },
+    "array.pending.address.nonce.to": {
+      "description": "The address of the receiver. null when its a contract creation transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "array.pending.address.nonce.transactionIndex": {
+      "description": "An integer of the transactions index position in the block encoded as a hexadecimal format",
+      "type": "object",
+      "fields": {}
+    },
+    "array.pending.address.nonce.value": {
+      "description": "The value transferred in Wei encoded as a hexadecimal format",
+      "type": "object",
+      "fields": {}
+    },
+    "array.pending.address.nonce.type": {
+      "description": "A number between 0 and 0x7f, for a total of 128 possible transaction types",
+      "type": "object",
+      "fields": {}
+    },
+    "array.pending.address.nonce.accesslist": {
+      "description": "A list of addresses and storage keys that the transaction plans to access, introduced in EIP-2929",
+      "type": "object",
+      "fields": {}
+    },
+    "array.pending.address.nonce.chainId": {
+      "description": "It returns a hexadecimal value in string format which represents an integer of the chain ID",
+      "type": "object",
+      "fields": {}
+    },
+    "array.pending.address.nonce.v": {
+      "description": "The ECDSA recovery id encoded as a hexadecimal format",
+      "type": "object",
+      "fields": {}
+    },
+    "array.pending.address.nonce.r": {
+      "description": "The ECDSA signature r",
+      "type": "object",
+      "fields": {}
+    },
+    "array.pending.address.nonce.s": {
+      "description": "The ECDSA signature s",
+      "type": "object",
+      "fields": {}
+    },
+    "array.queued": {
+      "description": "An array of transaction objects, with following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "array.queued.address": {
+      "description": "The address initiating a transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "array.queued.address.nonce": {
+      "description": "The nonce of the sending address",
+      "type": "object",
+      "fields": {}
+    },
+    "array.queued.address.nonce.blockHash": {
+      "description": "The hash of the block where this transaction was in, null here",
+      "type": "object",
+      "fields": {}
+    },
+    "array.queued.address.nonce.blockNumber": {
+      "description": "The block number where this transaction was added encoded as a hexadecimal, null here",
+      "type": "object",
+      "fields": {}
+    },
+    "array.queued.address.nonce.from": {
+      "description": "The address of the sender",
+      "type": "object",
+      "fields": {}
+    },
+    "array.queued.address.nonce.gas": {
+      "description": "The total amount of gas units used in the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "array.queued.address.nonce.gasPrice": {
+      "description": "The total amount in wei the sender is willing to pay for the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "array.queued.address.nonce.maxFeePerGas": {
+      "description": "The maximum amount of gas willing to be paid for the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "array.queued.address.nonce.maxPriorityFeePerGas": {
+      "description": "The maximum amount of gas to be included as a tip to the miner",
+      "type": "object",
+      "fields": {}
+    },
+    "array.queued.address.nonce.hash": {
+      "description": "The hash of the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "array.queued.address.nonce.input": {
+      "description": "The encoded transaction input data",
+      "type": "object",
+      "fields": {}
+    },
+    "array.queued.address.nonce.nonce": {
+      "description": "The number of transactions the sender has sent till now",
+      "type": "object",
+      "fields": {}
+    },
+    "array.queued.address.nonce.to": {
+      "description": "The address of the receiver. null when its a contract creation transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "array.queued.address.nonce.transactionIndex": {
+      "description": "An integer of the transactions index position in the block encoded as a hexadecimal format",
+      "type": "object",
+      "fields": {}
+    },
+    "array.queued.address.nonce.value": {
+      "description": "The value transferred in Wei encoded as a hexadecimal format",
+      "type": "object",
+      "fields": {}
+    },
+    "array.queued.address.nonce.type": {
+      "description": "A number between 0 and 0x7f, for a total of 128 possible transaction types",
+      "type": "object",
+      "fields": {}
+    },
+    "array.queued.address.nonce.accesslist": {
+      "description": "A list of addresses and storage keys that the transaction plans to access, introduced in EIP-2929",
+      "type": "object",
+      "fields": {}
+    },
+    "array.queued.address.nonce.chainId": {
+      "description": "It returns a hexadecimal value in string format which represents an integer of the chain ID",
+      "type": "object",
+      "fields": {}
+    },
+    "array.queued.address.nonce.v": {
+      "description": "The ECDSA recovery id encoded as a hexadecimal format",
+      "type": "object",
+      "fields": {}
+    },
+    "array.queued.address.nonce.r": {
+      "description": "The ECDSA signature r",
+      "type": "object",
+      "fields": {}
+    },
+    "array.queued.address.nonce.s": {
+      "description": "The ECDSA signature s",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

@@ -8,8 +8,8 @@ from langchain_openai import ChatOpenAI
 from langchain_core.output_parsers import JsonOutputParser
 
 # ---------- Path ----------
-# SPEC_ROOT        = Path("../solana_rpc_docs")   # solana
-SPEC_ROOT        = Path("../rpc_docs_output")   # ethereum
+# SPEC_ROOT        = Path("../RPC_Specification/solana")   # solana
+SPEC_ROOT        = Path("../RPC_Specification/ethereum")   # ethereum
 CONSTRAINT_DIR   = Path("constraints/ethereum")       # constraints
 NEGATIVE_DIR     = Path("assertions/ethereum/negative_rules")  # assertions
 SYSTEM_PROMPT    = Path("prompts/prompt.txt").read_text(encoding="utf8")

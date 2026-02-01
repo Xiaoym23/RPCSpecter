@@ -1,0 +1,27 @@
+{
+  "method_name": "eth_syncing",
+  "description": "Returns an object with the sync status of the node if the node is out-of-sync and is syncing. Returns false when the node is already in sync.",
+  "parameters": [],
+  "returns": {
+    "result": {
+      "description": "The result is false if JSON Object is not syncing otherwise it's true:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.startingBlock": {
+      "description": "The block at which the import started encoded as hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "result.currentBlock": {
+      "description": "The current block, same as eth_blockNumber encoded as hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "result.highestBlock": {
+      "description": "The estimated highest block encoded as hexadecimal",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

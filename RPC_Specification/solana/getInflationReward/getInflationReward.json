@@ -1,0 +1,69 @@
+{
+  "method_name": "getInflationReward",
+  "description": "Returns the inflation / staking reward for a list of addresses for an epoch.",
+  "parameters": [
+    {
+      "name": "array",
+      "type": "string",
+      "description": "An array of addresses to query, as base-58 encoded strings",
+      "sub_parameters": []
+    },
+    {
+      "name": "object",
+      "type": "object",
+      "description": "The configuration object with the following fields:",
+      "sub_parameters": [
+        {
+          "name": "commitment",
+          "type": "string",
+          "description": "The level of commitment required for the query. The options include:",
+          "sub_parameters": []
+        },
+        {
+          "name": "epoch",
+          "type": "integer",
+          "description": "An epoch for which the reward occurs. If omitted, the previous epoch will be used",
+          "sub_parameters": []
+        },
+        {
+          "name": "minContextSlot",
+          "type": "integer",
+          "description": "The minimum slot that the request can be evaluated at",
+          "sub_parameters": []
+        }
+      ]
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "The result will be JSON object with the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.epoch": {
+      "description": "The epoch during which the reward was received",
+      "type": "object",
+      "fields": {}
+    },
+    "result.effectiveSlot": {
+      "description": "The slot at which the rewards become active",
+      "type": "object",
+      "fields": {}
+    },
+    "result.amount": {
+      "description": "The reward value in lamports",
+      "type": "object",
+      "fields": {}
+    },
+    "result.postBalance": {
+      "description": "The account balance after the transaction in lamports",
+      "type": "object",
+      "fields": {}
+    },
+    "result.commission": {
+      "description": "The commission rate of the vote account at the time the reward was credited",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

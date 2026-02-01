@@ -1,0 +1,38 @@
+{
+  "method_name": "getBlocksWithLimit",
+  "description": "Returns a list of confirmed blocks starting at the given slot",
+  "parameters": [
+    {
+      "name": "start_slot",
+      "type": "string",
+      "description": "The start slot encoded as an u64 integer",
+      "sub_parameters": []
+    },
+    {
+      "name": "limit",
+      "type": "string",
+      "description": "The limit encoded as u64, 64-bit unsigned integer",
+      "sub_parameters": []
+    },
+    {
+      "name": "object",
+      "type": "object",
+      "description": "The configuration object with the following fields:",
+      "sub_parameters": [
+        {
+          "name": "commitment",
+          "type": "string",
+          "description": "The level of commitment required for the query. It can be one of:",
+          "sub_parameters": []
+        }
+      ]
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "An array of u64 integers listing confirmed blocks between the start_slot and either end_slot - if provided, or latest confirmed block, inclusive. The maximum range allowed is 500,000 slots",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

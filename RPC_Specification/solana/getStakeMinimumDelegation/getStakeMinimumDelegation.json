@@ -1,0 +1,26 @@
+{
+  "method_name": "getStakeMinimumDelegation",
+  "description": "Returns the stake minimum delegation in lamports.",
+  "parameters": [
+    {
+      "name": "object",
+      "type": "object",
+      "description": "The configuration object with the following fields:",
+      "sub_parameters": [
+        {
+          "name": "commitment",
+          "type": "string",
+          "description": "The level of commitment required for the query. The options include:",
+          "sub_parameters": []
+        }
+      ]
+    }
+  ],
+  "returns": {
+    "value": {
+      "description": "The stake minimum delegation in lamports",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

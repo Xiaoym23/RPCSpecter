@@ -1,0 +1,95 @@
+{
+  "method_name": "eth_getLogs",
+  "description": "Returns an array of all logs matching a given filter object.",
+  "parameters": [
+    {
+      "name": "object",
+      "type": "array",
+      "description": "The transaction call object which contains the following fields:",
+      "sub_parameters": [
+        {
+          "name": "fromBlock",
+          "type": "string",
+          "description": "The block number as a string in hexadecimal format or tags. The supported tag values include earliest for the earliest/genesis block, latest for the latest mined block, pending for the pending state/transactions, safe for the most recent secure block, and finalized for the most recent secure block accepted by more than 2/3 of validators. safe and finalized are only supported on Ethereum, Gnosis, Arbitrum, Arbitrum Nova, and Avalanche C-chain",
+          "sub_parameters": []
+        },
+        {
+          "name": "toBlock",
+          "type": "string",
+          "description": "The block number as a string in hexadecimal format or tags. The supported tag values include earliest for the earliest/genesis block, latest for the latest mined block, pending for the pending state/transactions, safe for the most recent secure block, and finalized for the most recent secure block accepted by more than 2/3 of validators. safe and finalized are only supported on Ethereum, Gnosis, Arbitrum, Arbitrum Nova, and Avalanche C-chain",
+          "sub_parameters": []
+        },
+        {
+          "name": "address",
+          "type": "string",
+          "description": "The contract address or a list of addresses from which logs should originate",
+          "sub_parameters": []
+        },
+        {
+          "name": "topics",
+          "type": "string",
+          "description": "An array of DATA topics and also, the topics are order-dependent. Visit this official page to learn more about topics",
+          "sub_parameters": []
+        },
+        {
+          "name": "blockHash",
+          "type": "string",
+          "description": "With the addition of EIP-234, blockHash is a new filter option that restricts the logs returned to the block number referenced in the blockHash. Using the blockHash field is equivalent to setting the fromBlock and toBlock to the block number the blockHash references. If blockHash is present in the filter criteria, neither fromBlock nor toBlock is allowed",
+          "sub_parameters": []
+        }
+      ]
+    }
+  ],
+  "returns": {
+    "array": {
+      "description": "An array of log objects, or an empty array if nothing has changed since last poll:",
+      "type": "object",
+      "fields": {}
+    },
+    "array.address": {
+      "description": "An address from which this log originated",
+      "type": "object",
+      "fields": {}
+    },
+    "array.topics": {
+      "description": "An array of zero to four 32 Bytes DATA of indexed log arguments. In Solidity, the first topic is the hash of the signature of the event (e.g. Deposit(address, bytes32, uint256)), except you declare the event with the anonymous specifier",
+      "type": "object",
+      "fields": {}
+    },
+    "array.data": {
+      "description": "It contains one or more 32 Bytes non-indexed arguments of the log",
+      "type": "object",
+      "fields": {}
+    },
+    "array.blockNumber": {
+      "description": "The block number where this log was in. null when it's a pending log",
+      "type": "object",
+      "fields": {}
+    },
+    "array.transactionHash": {
+      "description": "The hash of the transactions this log was created from. null when its a pending log",
+      "type": "object",
+      "fields": {}
+    },
+    "array.transactionIndex": {
+      "description": "The integer of the transaction's index position that the log was created from. null when it's a pending log",
+      "type": "object",
+      "fields": {}
+    },
+    "array.blockHash": {
+      "description": "The hash of the block where this log was in. null when it's a pending log",
+      "type": "object",
+      "fields": {}
+    },
+    "array.logIndex": {
+      "description": "The integer of the log index position in the block. null when it's a pending log",
+      "type": "object",
+      "fields": {}
+    },
+    "array.removed": {
+      "description": "It is true when the log was removed due to a chain reorganization, and false if it's a valid log",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

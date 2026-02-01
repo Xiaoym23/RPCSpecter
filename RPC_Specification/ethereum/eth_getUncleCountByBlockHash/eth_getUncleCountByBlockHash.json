@@ -1,0 +1,19 @@
+{
+  "method_name": "eth_getUncleCountByBlockHash",
+  "description": "Returns the number of uncles for the block matching the given block hash.",
+  "parameters": [
+    {
+      "name": "hash",
+      "type": "string",
+      "description": "The hash of the block to get uncles for",
+      "sub_parameters": []
+    }
+  ],
+  "returns": {
+    "uncles": {
+      "description": "The integer value of the number of uncles in the block encoded as hexadecimal",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

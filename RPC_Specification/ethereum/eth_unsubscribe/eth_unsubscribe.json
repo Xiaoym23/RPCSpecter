@@ -1,0 +1,19 @@
+{
+  "method_name": "eth_unsubscribe",
+  "description": "Cancels an existing subscription so that no further events are sent.",
+  "parameters": [
+    {
+      "name": "subscription_id",
+      "type": "string",
+      "description": "A subscription ID that was previously generated in a eth_subscribe RPC request",
+      "sub_parameters": []
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "A boolean value indicating if the subscription was canceled successfully",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

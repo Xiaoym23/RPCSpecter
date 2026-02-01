@@ -1,0 +1,22 @@
+{
+  "method_name": "getHighestSnapshotSlot",
+  "description": "Returns the highest slot that the node has a snapshot for. This will find the highest full snapshot slot, and the highest incremental snapshot slot based on the full snapshot slot, if there is one.",
+  "parameters": [],
+  "returns": {
+    "result": {
+      "description": "The result will be an object with the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.full": {
+      "description": "The highest fullsnapshot slot encoded as 64-bit unsigned integer",
+      "type": "object",
+      "fields": {}
+    },
+    "result.incremental": {
+      "description": "The greatest incremental snapshot slot derived from the full snapshot",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

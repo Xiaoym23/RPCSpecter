@@ -1,0 +1,19 @@
+{
+  "method_name": "eth_sendRawTransaction",
+  "description": "Creates new message call transaction or a contract creation for signed transactions. The new API Credit value for this method is 20 when used part of the Core API. If you are using eth_sendRawTransaction as part of a Marketplace add-on, view the add-on's homepage for more information about the specific charge.",
+  "parameters": [
+    {
+      "name": "data",
+      "type": "",
+      "description": "The signed transaction (typically signed with a library, using your private key)",
+      "sub_parameters": []
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "The transaction hash, or the zero hash if the transaction is not yet available",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

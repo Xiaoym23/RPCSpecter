@@ -1,0 +1,62 @@
+{
+  "method_name": "getEpochInfo",
+  "description": "Returns information about the current epoch.",
+  "parameters": [
+    {
+      "name": "object",
+      "type": "object",
+      "description": "The configuration object with the following fields:",
+      "sub_parameters": [
+        {
+          "name": "commitment",
+          "type": "string",
+          "description": "The level of commitment required for the query. The options include:",
+          "sub_parameters": []
+        },
+        {
+          "name": "minContextSlot",
+          "type": "integer",
+          "description": "The minimum slot at which the request can be evaluated",
+          "sub_parameters": []
+        }
+      ]
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "An object with the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.absoluteSlot": {
+      "description": "The current slot",
+      "type": "object",
+      "fields": {}
+    },
+    "result.blockHeight": {
+      "description": "The current block height",
+      "type": "object",
+      "fields": {}
+    },
+    "result.epoch": {
+      "description": "The current epoch",
+      "type": "object",
+      "fields": {}
+    },
+    "result.slotIndex": {
+      "description": "The current slot relative to the start of the current epoch",
+      "type": "object",
+      "fields": {}
+    },
+    "result.slotsInEpoch": {
+      "description": "The number of slots in this epoch",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transactionCount": {
+      "description": "The total number of transactions processed during the current epoch",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

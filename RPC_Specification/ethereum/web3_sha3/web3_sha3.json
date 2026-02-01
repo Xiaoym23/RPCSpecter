@@ -1,0 +1,19 @@
+{
+  "method_name": "web3_sha3",
+  "description": "Returns Keccak-256 (not the standardized SHA3-256) hash of the given data.",
+  "parameters": [
+    {
+      "name": "data",
+      "type": "string",
+      "description": "The data in hexadecimal form to convert into a SHA3 hash",
+      "sub_parameters": []
+    }
+  ],
+  "returns": {
+    "dATA": {
+      "description": "The SHA3 hash of the given string",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

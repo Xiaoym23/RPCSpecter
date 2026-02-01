@@ -1,0 +1,19 @@
+{
+  "method_name": "eth_getBlockTransactionCountByNumber",
+  "description": "Returns the number of transactions for the block matching the given block number.",
+  "parameters": [
+    {
+      "name": "blockNumber",
+      "type": "string",
+      "description": "The block number as a string in hexadecimal format or tags. The supported tag values include earliest for the earliest/genesis block, latest for the latest mined block, pending for the pending state/transactions, safe for the most recent secure block, and finalized for the most recent secure block accepted by more than 2/3 of validators. safe and finalized are only supported on Ethereum, Gnosis, Arbitrum, Arbitrum Nova, and Avalanche C-chain",
+      "sub_parameters": []
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "The number of transactions in a specific block represented in hexadecimal format",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

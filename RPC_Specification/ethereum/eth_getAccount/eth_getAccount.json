@@ -1,0 +1,45 @@
+{
+  "method_name": "eth_getAccount",
+  "description": "Retrieve account details by specifying an address and a block number/tag.",
+  "parameters": [
+    {
+      "name": "address",
+      "type": "string",
+      "description": "The account address for which the information is to be retrieved",
+      "sub_parameters": []
+    },
+    {
+      "name": "blockReference",
+      "type": "string",
+      "description": "The block number in either hexadecimal or integer format, or utilize tags for convenience. Available tags include 'latest' for the latest mined block, 'pending' for the pending state/transactions, and 'safe' or 'finalized' to indicate different degrees of block confirmation",
+      "sub_parameters": []
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "A result object which contains the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.codeHash": {
+      "description": "A 32 byte hash of the code of the account",
+      "type": "object",
+      "fields": {}
+    },
+    "result.storageRoot": {
+      "description": "The hash of the account's storage data",
+      "type": "object",
+      "fields": {}
+    },
+    "result.balance": {
+      "description": "The current balance of the account in wei",
+      "type": "object",
+      "fields": {}
+    },
+    "result.nonce": {
+      "description": "The transaction count of an account",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

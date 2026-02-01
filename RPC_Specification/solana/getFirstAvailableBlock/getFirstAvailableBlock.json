@@ -1,0 +1,12 @@
+{
+  "method_name": "getFirstAvailableBlock",
+  "description": "Returns the slot of the lowest confirmed block that has not been purged from the ledger",
+  "parameters": [],
+  "returns": {
+    "result": {
+      "description": "An integer slot of the lowest confirmed block as u64 (64-bit unsigned integer) integer",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

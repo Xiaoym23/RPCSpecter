@@ -1,0 +1,56 @@
+{
+  "method_name": "sendTransaction",
+  "description": "Submits a signed transaction to the cluster for processing.",
+  "parameters": [
+    {
+      "name": "transaction",
+      "type": "string",
+      "description": "The transaction as an encoded string.",
+      "sub_parameters": []
+    },
+    {
+      "name": "object",
+      "type": "object",
+      "description": "The configuration object with the following fields:",
+      "sub_parameters": [
+        {
+          "name": "skipPreflight",
+          "type": "boolean",
+          "description": "(default: false) If true, skip the preflight transaction checks",
+          "sub_parameters": []
+        },
+        {
+          "name": "preflightCommitment",
+          "type": "string",
+          "description": "(default: finalized) The commitment level to use for preflight",
+          "sub_parameters": []
+        },
+        {
+          "name": "encoding",
+          "type": "string",
+          "description": "The encoding format for account data. It can be one of base58 (slow), base64, base64+zstd or jsonParsed",
+          "sub_parameters": []
+        },
+        {
+          "name": "maxRetries",
+          "type": "usize",
+          "description": "The maximum number of times for the RPC node to retry sending the transaction to the leader. If this parameter is not provided, the RPC node will retry the transaction until it is finalized or until the blockhash expires",
+          "sub_parameters": []
+        },
+        {
+          "name": "minContextSlot",
+          "type": "integer",
+          "description": "The minimum slot at which the request can be evaluated",
+          "sub_parameters": []
+        }
+      ]
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "The First Transaction Signature embedded in the transaction, as base-58 encoded string (transaction id)",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

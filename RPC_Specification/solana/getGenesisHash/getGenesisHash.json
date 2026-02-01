@@ -1,0 +1,12 @@
+{
+  "method_name": "getGenesisHash",
+  "description": "Returns the genesis hash.",
+  "parameters": [],
+  "returns": {
+    "result": {
+      "description": "The hash encoded as base-58 string",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

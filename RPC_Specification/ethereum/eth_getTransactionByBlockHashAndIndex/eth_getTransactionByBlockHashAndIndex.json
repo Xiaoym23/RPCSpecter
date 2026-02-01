@@ -1,0 +1,120 @@
+{
+  "method_name": "eth_getTransactionByBlockHashAndIndex",
+  "description": "Returns information about a transaction given a blockhash and transaction index position.",
+  "parameters": [
+    {
+      "name": "blockHash",
+      "type": "string",
+      "description": "The block hash",
+      "sub_parameters": []
+    },
+    {
+      "name": "index",
+      "type": "string",
+      "description": "An integer of the transaction index position encoded as a hexadecimal",
+      "sub_parameters": []
+    }
+  ],
+  "returns": {
+    "object": {
+      "description": "The transaction response object, or null if no transaction is found:",
+      "type": "object",
+      "fields": {}
+    },
+    "object.blockHash": {
+      "description": "The hash of the block where this log was in. null when it's a pending log",
+      "type": "object",
+      "fields": {}
+    },
+    "object.blockNumber": {
+      "description": "The block number where this log was in. null when it's a pending log",
+      "type": "object",
+      "fields": {}
+    },
+    "object.from": {
+      "description": "The address of the sender",
+      "type": "object",
+      "fields": {}
+    },
+    "object.gas": {
+      "description": "The gas provided by the sender, encoded as hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "object.gasPrice": {
+      "description": "The gas price provided by the sender in wei, encoded as hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "object.maxFeePerGas": {
+      "description": "The maximum fee per gas set in the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "object.maxPriorityFeePerGas": {
+      "description": "The maximum priority gas fee set in the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "object.hash": {
+      "description": "The hash of the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "object.input": {
+      "description": "The data sent along with the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "object.nonce": {
+      "description": "The number of transactions made by the sender before this one encoded as hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "object.to": {
+      "description": "The address of the receiver. null when it's a contract creation transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "object.transactionIndex": {
+      "description": "The integer of the transaction's index position that the log was created from. null when it's a pending log",
+      "type": "object",
+      "fields": {}
+    },
+    "object.value": {
+      "description": "The value transferred in wei encoded as hexadecimal",
+      "type": "object",
+      "fields": {}
+    },
+    "object.type": {
+      "description": "The transaction type",
+      "type": "object",
+      "fields": {}
+    },
+    "object.accessList": {
+      "description": "A list of addresses and storage keys that the transaction plans to access",
+      "type": "object",
+      "fields": {}
+    },
+    "object.chainId": {
+      "description": "The chain id of the transaction, if any",
+      "type": "object",
+      "fields": {}
+    },
+    "object.v": {
+      "description": "The standardized V field of the signature",
+      "type": "object",
+      "fields": {}
+    },
+    "object.r": {
+      "description": "The R field of the signature",
+      "type": "object",
+      "fields": {}
+    },
+    "object.s": {
+      "description": "The S field of the signature",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "method_name": "eth_blockNumber",
+  "description": "Returns the latest block number of the blockchain.",
+  "parameters": [],
+  "returns": {
+    "result": {
+      "description": "An integer value of the latest block number encoded as hexadecimal",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

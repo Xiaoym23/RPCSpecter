@@ -1,0 +1,38 @@
+{
+  "method_name": "getLeaderSchedule",
+  "description": "Returns the leader schedule for an epoch.",
+  "parameters": [
+    {
+      "name": "u64",
+      "type": "string",
+      "description": "Fetchs the leader schedule for the epoch that corresponds to the provided slot. If unspecified, the leader schedule for the current epoch is fetched",
+      "sub_parameters": []
+    },
+    {
+      "name": "object",
+      "type": "object",
+      "description": "The configuration object with the following fields:",
+      "sub_parameters": [
+        {
+          "name": "commitment",
+          "type": "string",
+          "description": "The level of commitment required for the query. The options include:",
+          "sub_parameters": []
+        },
+        {
+          "name": "identity",
+          "type": "string",
+          "description": "Only returns the results for this validator identity encoded as base-58",
+          "sub_parameters": []
+        }
+      ]
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "Null if the requested epoch is not found otherwise the result field will be a dictionary of validator identities, as base-58 encoded strings, and their corresponding leader slot indices as values (indices are relative to the first slot in the requested epoch)",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

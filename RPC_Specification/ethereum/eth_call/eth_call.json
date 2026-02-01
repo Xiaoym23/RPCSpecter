@@ -1,0 +1,99 @@
+{
+  "method_name": "eth_call",
+  "description": "Executes a new message call immediately without creating a transaction on the block chain.",
+  "parameters": [
+    {
+      "name": "transaction",
+      "type": "object",
+      "description": "The transaction call object which contains the following fields:",
+      "sub_parameters": [
+        {
+          "name": "from",
+          "type": "string",
+          "description": "The address from which the transaction is sent",
+          "sub_parameters": []
+        },
+        {
+          "name": "to",
+          "type": "string",
+          "description": "The address to which the transaction is addressed",
+          "sub_parameters": []
+        },
+        {
+          "name": "gas",
+          "type": "integer",
+          "description": "The integer of gas provided for the transaction execution",
+          "sub_parameters": []
+        },
+        {
+          "name": "gasPrice",
+          "type": "integer",
+          "description": "The integer of gasPrice used for each paid gas encoded as hexadecimal",
+          "sub_parameters": []
+        },
+        {
+          "name": "value",
+          "type": "integer",
+          "description": "The integer of value sent with this transaction encoded as hexadecimal",
+          "sub_parameters": []
+        },
+        {
+          "name": "data",
+          "type": "string",
+          "description": "The hash of the method signature and encoded parameters. For more information, see the Contract ABI description in the Solidity documentation",
+          "sub_parameters": []
+        }
+      ]
+    },
+    {
+      "name": "blockNumber",
+      "type": "string",
+      "description": "The block number in hexadecimal format or the string latest, earliest, pending, safe or finalized (safe and finalized tags are only supported on Ethereum, Gnosis, Arbitrum, Arbitrum Nova and Avalanche C-chain), see the default block parameter description in the official Ethereum documentation",
+      "sub_parameters": []
+    },
+    {
+      "name": "Object",
+      "type": "object",
+      "description": "The State Override Set option allows you to change the state of a contract before executing the call, which means you can modify the values of variables stored in the contract, such as balances and approvals for that call without actually modifying the contract. Each address maps to an object containing:",
+      "sub_parameters": [
+        {
+          "name": "balance",
+          "type": "string",
+          "description": "The fake balance to set for the account before executing the call",
+          "sub_parameters": []
+        },
+        {
+          "name": "nonce",
+          "type": "string",
+          "description": "The fake nonce to set for the account before executing the call",
+          "sub_parameters": []
+        },
+        {
+          "name": "code",
+          "type": "string",
+          "description": "The fake EVM bytecode to inject into the account before executing the call",
+          "sub_parameters": []
+        },
+        {
+          "name": "state",
+          "type": "object",
+          "description": "The fake key-value mapping to override all slots in the account storage before executing the call",
+          "sub_parameters": []
+        },
+        {
+          "name": "stateDiff",
+          "type": "integer",
+          "description": "The fake key-value mapping to override individual slots in the account storage before executing the call",
+          "sub_parameters": []
+        }
+      ]
+    }
+  ],
+  "returns": {
+    "data": {
+      "description": "The return value of the executed contract method",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

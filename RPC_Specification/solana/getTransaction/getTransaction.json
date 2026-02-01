@@ -1,0 +1,377 @@
+{
+  "method_name": "getTransaction",
+  "description": "Returns transaction details for a confirmed transaction.",
+  "parameters": [
+    {
+      "name": "tx_sig",
+      "type": "string",
+      "description": "The transaction signature as base-58 encoded string",
+      "sub_parameters": []
+    },
+    {
+      "name": "object",
+      "type": "object",
+      "description": "The configuration object with the following fields:",
+      "sub_parameters": [
+        {
+          "name": "commitment",
+          "type": "string",
+          "description": "The level of commitment required for the query. The options include:",
+          "sub_parameters": [
+            {
+              "name": "finalized",
+              "type": "string",
+              "description": "The node will query the most recent block confirmed by the supermajority of the cluster as having reached maximum lockout, meaning the cluster has recognized this block as finalized",
+              "sub_parameters": []
+            },
+            {
+              "name": "confirmed",
+              "type": "string",
+              "description": "The node will query the most recent block that has been voted on by the supermajority of the cluster",
+              "sub_parameters": []
+            }
+          ]
+        },
+        {
+          "name": "maxSupportedTransactionVersion",
+          "type": "integer",
+          "description": "The maximum transaction version to return in responses. If the requested block contains a transaction with a higher version, an error will be returned. If this parameter is omitted, only legacy transactions will be returned, and a block containing any versioned transaction will prompt an error",
+          "sub_parameters": []
+        },
+        {
+          "name": "encoding",
+          "type": "string",
+          "description": "(Default: json) The encoding format for the transaction data. It can be one of json, jsonParsed, base58, or base64",
+          "sub_parameters": []
+        }
+      ]
+    }
+  ],
+  "returns": {
+    "result": {
+      "description": "Null if the specified block is not confirmed otherwise RpcResponse JSON object with the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.blockTime": {
+      "description": "The estimated production time, as Unix timestamp (seconds since the Unix epoch). It's null if not available",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta": {
+      "description": "The transaction status metadata object, which contains additional information about the block and its transactions. The meta object can be null, or it may contain the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.err": {
+      "description": "Error code if the transaction failed or null if the transaction succeeds",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.fee": {
+      "description": "The total fees paid by all transactions in the block encoded as u64 integer",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.innerInstructions": {
+      "description": "An array of objects representing the inner instructions of all transactions in the block (omitted if inner instruction recording is not enabled). Each object has the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.innerInstructions.index": {
+      "description": "The index of the instruction in the transaction, which determines the order in which the operations were executed",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.innerInstructions.instructions": {
+      "description": "An array of instructions that were executed in the block's transactions",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.innerInstructions.instructions.parsed": {
+      "description": "An array of parsed instructions that were executed in the block's transactions",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.innerInstructions.instructions.parsed.info": {
+      "description": "An array of information objects that provide additional details about the transactions in the block",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.innerInstructions.instructions.parsed.info.lamports": {
+      "description": "The number of lamports assigned to this account as u64 (64-bit unsigned integer)",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.innerInstructions.instructions.parsed.info.newAccount": {
+      "description": "The new account created as part of the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.innerInstructions.instructions.parsed.info.owner": {
+      "description": "The base-58 encoded Pubkey of the program this account has been assigned to",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.innerInstructions.instructions.parsed.info.source": {
+      "description": "The source account that funded the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.innerInstructions.instructions.parsed.info.space": {
+      "description": "The amount of storage space required to store a specific transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.innerInstructions.instructions.parsed.type": {
+      "description": "The type of the block. It can be used to differentiate between regular blocks and special blocks such as snapshot or transaction confirmation blocks",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.innerInstructions.instructions.program": {
+      "description": "The data associated with the program that was executed in the block's transactions",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.innerInstructions.instructions.programId": {
+      "description": "The ID of the program that executed the instruction",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.innerInstructions.instructions.stackHeight": {
+      "description": "The current depth of the execution stack",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.logMessages": {
+      "description": "An array of strings containing any log messages generated by the block's transactions (omitted if inner instruction recording is not enabled)",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.postBalances": {
+      "description": "An array of lamport balances for each account in the block after the transactions were processed",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.postTokenBalances": {
+      "description": "An array of token balances for each token account in the block after the transactions were processed (omitted if inner instruction recording is not enabled)",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.postTokenBalances.accountIndex": {
+      "description": "The index of an account within a transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.postTokenBalances.mint": {
+      "description": "Provides information about the creation of new tokens",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.postTokenBalances.owner": {
+      "description": "The authority pubkey for the token account. Can be a normal wallet or a program-derived address (PDA) used by protocols like escrows, vaults, pools, etc",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.postTokenBalances.uiTokenAmount": {
+      "description": "The amount of a token transfer in a human-readable format",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.postTokenBalances.uiTokenAmount.amount": {
+      "description": "The amount of a token transfer",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.postTokenBalances.uiTokenAmount.decimals": {
+      "description": "The number of decimal places used by the token",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.postTokenBalances.uiTokenAmount.uiAmount": {
+      "description": "The amount of a token transfer in the smallest unit of the token",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.postTokenBalances.uiTokenAmount.uiAmountString": {
+      "description": "The amount of a token transfer as a string with the appropriate number of decimal places for the token",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.preBalances": {
+      "description": "An array of lamport balances for each account in the block before the transactions were processed",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.preTokenBalances": {
+      "description": "An array of token balances for each token account in the block before the transactions were processed (omitted if inner instruction recording is not enabled)",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.preTokenBalances.accountIndex": {
+      "description": "The index of an account within a transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.preTokenBalances.mint": {
+      "description": "Provides information about the creation of new tokens",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.preTokenBalances.owner": {
+      "description": "The authority pubkey for the token account. Can be a normal wallet or a program-derived address (PDA) used by protocols like escrows, vaults, pools, etc",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.preTokenBalances.uiTokenAmount": {
+      "description": "The amount of a token transfer in a human-readable format",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.preTokenBalances.uiTokenAmount.amount": {
+      "description": "The amount of a token transfer",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.preTokenBalances.uiTokenAmount.decimals": {
+      "description": "The number of decimal places used by the token",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.preTokenBalances.uiTokenAmount.uiAmount": {
+      "description": "The amount of a token transfer in the smallest unit of the token",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.preTokenBalances.uiTokenAmount.uiAmountString": {
+      "description": "The amount of a token transfer as a string with the appropriate number of decimal places for the token",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.rewards": {
+      "description": "An object containing information about the rewards earned by the block's validators (only present if the rewards are requested). It has the following fields:",
+      "type": "object",
+      "fields": {}
+    },
+    "result.meta.status": {
+      "description": "The status of the transaction. If the transaction was successful, returns Ok and if the transaction failed with TransactionError, returns Err",
+      "type": "object",
+      "fields": {}
+    },
+    "result.slot": {
+      "description": "The slot number to retrieve block production information",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transaction": {
+      "description": "The transaction object. It could be either JSON format or encoded binary data, depending on the encoding parameter",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transaction.message": {
+      "description": "An array of transactions included in the block",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transaction.message.accountKeys": {
+      "description": "An array of public keys associated with the accounts that were accessed during the execution of transactions in the block",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transaction.message.accountKeys.pubkey": {
+      "description": "The Pubkey of program encoded as base-58 string",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transaction.message.accountKeys.signer": {
+      "description": "Used to sign transactions in the block. Also used to identify the signers involved in the block's transactions and to verify the authenticity of the signatures",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transaction.message.accountKeys.source": {
+      "description": "The source account that funded the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transaction.message.accountKeys.writable": {
+      "description": "A boolean value that indicates whether the accounts associated with the given public keys were modified by the transactions or not",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transaction.message.instructions": {
+      "description": "An array of instructions that were executed in the block's transactions",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transaction.message.instructions.parsed": {
+      "description": "An array of parsed instructions that were executed in the block's transactions",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transaction.message.instructions.parsed.info": {
+      "description": "An array of information objects that provide additional details about the transactions in the block",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transaction.message.instructions.parsed.info.account": {
+      "description": "An address on the Solana blockchain that is used to store assets",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transaction.message.instructions.parsed.info.mint": {
+      "description": "Provides information about the creation of new tokens",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transaction.message.instructions.parsed.info.source": {
+      "description": "The source account that funded the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transaction.message.instructions.parsed.info.systemProgram": {
+      "description": "The system program that executed the transaction",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transaction.message.instructions.parsed.info.tokenProgram": {
+      "description": "Responsible for maintaining the supply and balance of the token, and for executing transfers of the token between accounts",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transaction.message.instructions.parsed.info.wallet": {
+      "description": "Wallet is used for managing and storing assets",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transaction.message.instructions.parsed.type": {
+      "description": "The type of the block. It can be used to differentiate between regular blocks and special blocks such as snapshot or transaction confirmation blocks",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transaction.message.instructions.program": {
+      "description": "The data associated with the program that was executed in the block's transactions",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transaction.message.instructions.programId": {
+      "description": "The ID of the program that executed the instruction",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transaction.message.recentBlockhash": {
+      "description": "The recent block hash for the account's cluster",
+      "type": "object",
+      "fields": {}
+    },
+    "result.transaction.signatures": {
+      "description": "The list of transaction signatures contained within a particular block",
+      "type": "object",
+      "fields": {}
+    },
+    "result.version": {
+      "description": "The transaction version. It's undefined if maxSupportedTransactionVersion is not set in the requested parameters",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

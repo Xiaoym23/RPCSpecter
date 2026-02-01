@@ -1,0 +1,42 @@
+{
+  "method_name": "getClusterNodes",
+  "description": "Returns information about all the nodes participating in the cluster.",
+  "parameters": [],
+  "returns": {
+    "featureSet": {
+      "description": "The unique identifier of the node's feature set",
+      "type": "object",
+      "fields": {}
+    },
+    "gossip": {
+      "description": "The gossip network address for the node",
+      "type": "object",
+      "fields": {}
+    },
+    "pubkey": {
+      "description": "The public key of the node encoded as base-58 string",
+      "type": "object",
+      "fields": {}
+    },
+    "rpc": {
+      "description": "The IP address and port number of the node's JSON-RPC service. Null if the JSON RPC service is not enabled",
+      "type": "object",
+      "fields": {}
+    },
+    "shredVersion": {
+      "description": "The version of the data structure used by this node to store and transmit blocks",
+      "type": "object",
+      "fields": {}
+    },
+    "tpu": {
+      "description": "The TPU network address for the node",
+      "type": "object",
+      "fields": {}
+    },
+    "version": {
+      "description": "The software version of the node. Null if the version information is not available",
+      "type": "object",
+      "fields": {}
+    }
+  }
+}

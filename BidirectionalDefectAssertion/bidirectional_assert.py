@@ -3,7 +3,7 @@ from pathlib import Path
 from typing import Any, Dict, Optional
 from neg_rule_engine import eval_rule
 
-ASSERT_ROOT = Path("assertions/golden")          
+ASSERT_ROOT = Path("../ConstraintExtraction/assertions/golden")          
 ASSERT_ROOT.mkdir(parents=True, exist_ok=True)
 
 ILLEGAL_EXAMPLES = {

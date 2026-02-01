@@ -18,11 +18,13 @@ pip install -r requirements.txt
 
 # Set environment variables
 export OPENAI_API_KEY="sk-xxx"
+export base_url="xxx"
 export SOLANA_RPC="http://127.0.0.1:8899"
 export ETH_RPC="http://127.0.0.1:32778"
 ```
 
 ## Quick Start
 ```
+python3 ConstraintExtraction/llm.py
 python3 main.py
 ```

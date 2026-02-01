@@ -1,0 +1,9 @@
+{
+  "shape_hash": "f494e258",
+  "upper_bounds": {
+    "http_status": 200,
+    "result.context.slot": 1802856,
+    "result.value.lastValidBlockHeight": 1803006,
+    "id": 1
+  }
+}

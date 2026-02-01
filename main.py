@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 import json, os
 from pathlib import Path
-from mutator_engine import ConstraintMutator, generate_base_skeleton
-from core.bidirectional_assert import dynamic_assert
+from ConstraintDrivenMutation.mutator_engine import ConstraintMutator, generate_base_skeleton
+from BidirectionalDefectAssertion.bidirectional_assert import dynamic_assert
 import requests
 from typing import Any, Optional, List
 

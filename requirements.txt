@@ -1,0 +1,6 @@
+langchain==1.2.7
+langchain_community==0.4.1
+langchain_core==1.2.7
+langchain_openai==1.1.7
+pydantic==2.12.5
+Requests==2.32.5

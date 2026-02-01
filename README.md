@@ -25,6 +25,8 @@ export ETH_RPC="http://127.0.0.1:32778"
 
 ## Quick Start
 ```
+# Execute the following code sequentially
 python3 ConstraintExtraction/llm.py
-python3 main.py
+python3 ConstraintExtraction/seed_generate.py
+python3 pipeline.py
 ```

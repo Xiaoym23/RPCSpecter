@@ -10,13 +10,12 @@ from typing import Any, Optional, List
 # choose ethereum or solana or other blockchain
 RPC = os.getenv("ETH_RPC")  # Ethereum RPC port
 RPC = os.getenv("SOLANA_RPC")  # Solana RPC port
-MUT_FILE    = Path("mutations.jsonl")
-RESULT_FILE = Path("results.jsonl")
-REPORT_FILE = Path("report_summary.json")
-METHOD_PATH = Path("constraints/ethereum")
-# METHOD_PATH = Path("constraints/ethereum")
+
+METHOD_PATH = Path("ConstraintExtraction/constraints/ethereum")
+# METHOD_PATH = Path("ConstraintExtraction/constraints/solana")
 OUTPUT_PATH = Path("results/ethereum")
 # OUTPUT_PATH = Path("results/solana")
+
 
 # RPC request
 def send_one(req: dict, method: str) -> dict:

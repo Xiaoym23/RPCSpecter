@@ -12,22 +12,15 @@ It takes standardized RPC specifications as input, extracts semantic constraints
 
 RPCSpecter uses three constraint categories to model RPC parameter validity:
 
-- **OSC: On-chain State Constraints**
+- **OSC: On-chain State Constraints.**
   Values that depend on current or historical blockchain state, such as an existing account, latest slot, fresh blockhash, available block range, or pruned boundary.
 
-- **PDC: Procedural Constraints**
+- **PDC: Procedural Constraints.**
   Values that must be produced by a construction pipeline, such as building, signing, serializing, and encoding a transaction.
 
-- **STC: Syntax Constraints**
+- **STC: Syntax Constraints.**
   Syntactic, combinational, and boundary constraints, including enumerated options, cross-parameter compatibility, numeric ranges, string sizes, and array lengths.
 
-The mutation engine implements these as:
-
-```text
-ConstraintDrivenMutation/mutators/osc_mutator.py   # OSC
-ConstraintDrivenMutation/mutators/pdc_mutator.py   # PDC
-ConstraintDrivenMutation/mutators/stc_mutator.py   # STC
-```
 
 ## Repository Structure
 
@@ -54,7 +47,7 @@ RPCSpecter/
 ### Prerequisites
 
 - Python 3.11+
-- A local Ethereum or Solana development node
+- A local Ethereum or Solana local node
 - An OpenAI-compatible API key for constraint extraction and helper synthesis
 
 ### Setup
@@ -83,7 +76,7 @@ export CHAIN="solana"
 export SOLANA_RPC="http://127.0.0.1:8899"
 ```
 
-Optional runtime knobs:
+Optional runtime settings:
 
 ```bash
 export RPC_TIMEOUT=3
@@ -131,7 +124,7 @@ results/{chain}/{method}/results.jsonl         # requests, responses, verdicts
 results/{chain}/{method}/report_summary.json   # summary statistics
 ```
 
-Typical verdicts:
+<!-- Typical verdicts:
 
 | Verdict | Meaning |
 |---|---|
@@ -140,5 +133,5 @@ Typical verdicts:
 | `GOLDEN_UPDATED` | Golden sample expanded after repeated bound exceedances. |
 | `NEG_PASS` | Invalid request was correctly rejected. |
 | `NEG_VIOLATION` | Invalid request was accepted; potential bug or semantic inconsistency. |
-| `FAILED` | Valid request response deviated from the golden contract. |
+| `FAILED` | Valid request response deviated from the golden contract. | -->
 

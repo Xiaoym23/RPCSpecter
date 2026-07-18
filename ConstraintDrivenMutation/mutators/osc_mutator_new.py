@@ -43,17 +43,18 @@ SAFE_BUILTINS = {
 }
 
 class OSCMutator:
-    """通用 OSC 变异器：读 tools.json → 按路径注入 → 回退第一条值"""
-    def __init__(self, method: str):
+    """OSC mutator: instantiate and perturb on-chain-state dependent parameters."""
+    def __init__(self, method: str, chain: str = "ethereum"):
         self.method = method
+        self.chain = chain
         self.history = []
 
     def mutate(self, payload: Dict[str, Any]) -> Dict[str, Any]:
         tools = self._load_tools()
         for tool in tools:
-            if tool["constraint"] != "OSC":
+            if tool.get("constraint") != "OSC":
                 continue
-            path = tool["path"]
+            path = tool.get("path") or tool.get("param", "")
             print("参数为", path)
 
             # print("OSC分隔后参数为", path.split(".")[-1])
@@ -94,7 +95,7 @@ class OSCMutator:
         #     self.history.append({"path": path, "old": old, "new": new_val})
         # return payload
         # 1. 执行 legal 函数
-            new_val = self._exec_func(tool["legal"], path)
+            new_val = self._exec_func(tool.get("legal", ""), path)
             print("执行结果为", new_val)
             # 2. 无函数 → 回退第一条值
             if new_val is None:
@@ -106,10 +107,15 @@ class OSCMutator:
 
     # ---------- 辅助 ----------
     def _load_tools(self) -> list:
-        file = Path(f"tools/ethereum/tools.json")
-        if not file.exists():
-            return []
-        return json.loads(file.read_text()).get("tools", [])
+        candidates = [
+            Path(f"ConstraintExtraction/tools/{self.chain}/tools.json"),
+            Path(f"tools/{self.chain}/tools.json"),
+            Path(f"tools/ethereum/tools.json"),
+        ]
+        for file in candidates:
+            if file.exists():
+                return json.loads(file.read_text()).get("tools", [])
+        return []
 
     # def _exec_func(self, code: str, path: str) -> Any:
     #     """执行工具文件里的 legal 函数"""
@@ -162,10 +168,14 @@ class OSCMutator:
         return None
 
     def _load_pool(self) -> dict:
-        file = Path(f"osc_spc/ethereum/by_constraint.json")
-        if not file.exists():
-            return {}
-        return json.loads(file.read_text())
+        candidates = [
+            Path(f"osc_spc/{self.chain}/by_constraint.json"),
+            Path("osc_spc/ethereum/by_constraint.json"),
+        ]
+        for file in candidates:
+            if file.exists():
+                return json.loads(file.read_text())
+        return {}
     
 
 # def _deep_get(obj: dict, path: str) -> Any:

@@ -114,25 +114,29 @@ ETH_EPC_VALUE_POOL = {
     }
 }
 
-def full_pool(param_name: str) -> List[Any]:
-    # pool = EPC_VALUE_POOL.get(param_name, {})
-    pool = ETH_EPC_VALUE_POOL.get(param_name, {})
+def full_pool(param_name: str, chain: str = "ethereum") -> List[Any]:
+    pool = ETH_EPC_VALUE_POOL.get(param_name, {}) if chain == "ethereum" else EPC_VALUE_POOL.get(param_name, {})
     return pool.get("legal", []) + pool.get("empty", []) + pool.get("illegal", [])
 
 # ---------- 2. 读指定方法的 EPC 段 ----------
-def load_method_epc(method: str) -> Dict[str, dict]:
-    file = Path("epc/ethereum/by_method.json")
-    if not file.exists():
-        return {}
-    methods = json.loads(file.read_text())
-    for m in methods:
-        if m["method"] == method:
-            return m.get("epc", {})   # 只返回 EPC 段
+def load_method_epc(method: str, chain: str = "ethereum") -> Dict[str, dict]:
+    candidates = [
+        Path(f"stc/{chain}/by_method.json"),
+        Path(f"epc/{chain}/by_method.json"),
+        Path("epc/ethereum/by_method.json"),
+    ]
+    for file in candidates:
+        if not file.exists():
+            continue
+        methods = json.loads(file.read_text())
+        for m in methods:
+            if m.get("method") == method:
+                return m.get("stc", {}) or m.get("epc", {}) or m.get("syntax", {})
     return {}
 
 # ---------- 3. 穷举组合生成器 ----------
-def generate_epc_combinations(method: str) -> List[Dict[str, Any]]:
-    epc_map = load_method_epc(method)
+def generate_epc_combinations(method: str, chain: str = "ethereum") -> List[Dict[str, Any]]:
+    epc_map = load_method_epc(method, chain)
     if not epc_map:
         print(f"没找到{method}方法")
         return []
@@ -141,7 +145,7 @@ def generate_epc_combinations(method: str) -> List[Dict[str, Any]]:
     pools: Dict[str, List[Any]] = {}
     for path, spec in epc_map.items():
         param_name = path.split(".")[-1]  # object.xxx → xxx
-        pools[path] = full_pool(param_name)
+        pools[path] = full_pool(param_name, chain)
     print('组合池为', pools)
     # 2. Cartesian 积：所有组合
     keys = list(pools.keys())
@@ -232,7 +236,7 @@ def _assign_payload(obj: dict, path: str, value: Any) -> None:
 #     for item in epc_params:
 #         path = item["path"]
 #         param_name = leaf_name(path)
-#         pools[path] = full_pool(param_name)   # 全集
+#         pools[path] = full_pool(param_name, chain)   # 全集
 
 #     # 2. Cartesian 积：所有组合
 #     keys = list(pools.keys())

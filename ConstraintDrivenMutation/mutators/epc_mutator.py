@@ -9,12 +9,13 @@ from .epc_combinator import generate_epc_combinations, _assign_payload, _deep_ge
 from copy import deepcopy
 
 class EncodingEPC:
-    """通用 EPC 变异器：不再硬编码字段，不再硬编码值」"""
-    def __init__(self, method: str):
+    """STC enumerated-domain mutator (legacy EPC implementation)."""
+    def __init__(self, method: str, chain: str = "ethereum"):
         self.method = method
+        self.chain = chain
         self.history = []
-        # 1. 生成本方法所有 EPC 组合（合法+空+非法）
-        self._combos = generate_epc_combinations(method)   # list[dict]
+        # 1. 生成本方法所有 STC/EPC 组合（合法+空+非法）
+        self._combos = generate_epc_combinations(method, chain)   # list[dict]
         self._index = 0                                    # 轮询索引
 
     # ---------- 通用 EPC 变异 ----------

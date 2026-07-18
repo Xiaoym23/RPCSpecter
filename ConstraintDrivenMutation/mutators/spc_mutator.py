@@ -29,17 +29,17 @@ SAFE_BUILTINS = {
 
 
 class TransactionSPC:
-    """通用 SPC 变异器：读 tools.json → 链式 A→B→C→D → 回退第一条值"""
-    def __init__(self):
-        # self.method = method
+    """PDC mutator: legacy SPC-compatible implementation for procedural constraints."""
+    def __init__(self, chain: str = "ethereum"):
+        self.chain = chain
         self.history = []
 
     def mutate(self, payload: Dict[str, Any]) -> Dict[str, Any]:
         tools = self._load_tools()
         for tool in tools:
-            if tool["constraint"] != "SPC":
+            if tool.get("constraint") not in {"PDC", "SPC"}:
                 continue
-            path = tool["path"]
+            path = tool.get("path") or tool.get("param", "")
             
             print("分隔后参数为", path.split(".")[-1])
             match = 0
@@ -61,7 +61,7 @@ class TransactionSPC:
 
             if not chain_variants:
                 # 单步 SPC → 直接合法值（传入 imports）
-                new_val = self._exec_single(tool["legal"], path, tool.get("imports", []))
+                new_val = self._exec_single(tool.get("legal", ""), path, tool.get("imports", []))
             else:
                 # 链式 A→B→C→D（传入 imports）
                 new_val = self._chain_process(chain_variants, path, tool.get("imports", []))
@@ -192,24 +192,33 @@ class TransactionSPC:
 
     # ---------- 辅助 ----------
     def _load_tools(self) -> list:
-        file = Path(f"tools/ethereum/tools.json")
-        if not file.exists():
-            return []
-        return json.loads(file.read_text()).get("tools", [])
+        candidates = [
+            Path(f"ConstraintExtraction/tools/{self.chain}/tools.json"),
+            Path(f"tools/{self.chain}/tools.json"),
+            Path("tools/ethereum/tools.json"),
+        ]
+        for file in candidates:
+            if file.exists():
+                return json.loads(file.read_text()).get("tools", [])
+        return []
 
     def _first_value(self, path: str) -> Any:
         """读去重全集第一条值作为回退"""
         pool = self._load_pool()
-        for item in pool.get("SPC", []):
+        for item in pool.get("PDC", []) + pool.get("SPC", []):
             if item["path"] == path:
                 return _empty_value(item["type"])
         return None
 
     def _load_pool(self) -> dict:
-        file = Path(f"osc_spc/ethereum/by_constraint.json")
-        if not file.exists():
-            return {}
-        return json.loads(file.read_text())
+        candidates = [
+            Path(f"osc_spc/{self.chain}/by_constraint.json"),
+            Path("osc_spc/ethereum/by_constraint.json"),
+        ]
+        for file in candidates:
+            if file.exists():
+                return json.loads(file.read_text())
+        return {}
 
 
 # ---------- 通用工具 ----------

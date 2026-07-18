@@ -5,7 +5,7 @@ RPCSpecter is a **specification-driven, constraint-aware fuzzing framework** for
 It takes standardized RPC specifications as input, extracts semantic constraints from those specifications, generates executable seed requests, mutates the requests with constraint guidance, and checks responses with a bidirectional assertion oracle.
 
 ## Overview
-![image][RPCSpecter workflow](./docs/images/RPCSpecter.png)
+![image](./docs/images/RPCSpecter.png)
 
 
 ## Key Ideas

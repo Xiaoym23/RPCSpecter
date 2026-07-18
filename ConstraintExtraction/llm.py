@@ -1,63 +1,74 @@
 #!/usr/bin/env python3
-import json, os
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import sys
 from pathlib import Path
-from typing import Dict, List
+from typing import Dict
 
-from langchain_core.prompts import ChatPromptTemplate
-from langchain_openai import ChatOpenAI
-from langchain_core.output_parsers import JsonOutputParser
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from config import ROOT, get_chain  # noqa: E402
 
-# ---------- Path ----------
-# SPEC_ROOT        = Path("../RPC_Specification/solana")   # solana
-SPEC_ROOT        = Path("../RPC_Specification/ethereum")   # ethereum
-CONSTRAINT_DIR   = Path("constraints/ethereum")       # constraints
-NEGATIVE_DIR     = Path("assertions/ethereum/negative_rules")  # assertions
-SYSTEM_PROMPT    = Path("prompts/prompt.txt").read_text(encoding="utf8")
 
-SYSTEM_PROMPT = SYSTEM_PROMPT.replace("{", "{{").replace("}", "}}")
-
-# ---------- LangChain ----------
-llm = ChatOpenAI(  
-    model="gpt-5.1",  
-    base_url=os.getenv("base_url"),  # own base_url  
-    api_key=os.getenv("OPENAI_API_KEY")  # own API key  
-)
-prompt = ChatPromptTemplate.from_messages([
-    ("system", SYSTEM_PROMPT),
-    ("user", "{rpc_json}")
-])
-chain = prompt | llm | JsonOutputParser()
-
-# ---------- Tools ----------
 def read_spec(path: Path) -> Dict:
     with path.open(encoding="utf8") as f:
         return json.load(f)
 
-def write_json(out: Path, data: Dict):
+
+def write_json(out: Path, data: Dict) -> None:
     out.parent.mkdir(parents=True, exist_ok=True)
     with out.open("w", encoding="utf8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
 
-# ---------- Main loop ----------
-def scan_and_extract():
-    i = 1
-    for spec_file in SPEC_ROOT.rglob("*.json"):
+
+def build_chain(model: str):
+    from langchain_core.output_parsers import JsonOutputParser
+    from langchain_core.prompts import ChatPromptTemplate
+    from langchain_openai import ChatOpenAI
+
+    system_prompt = (ROOT / "ConstraintExtraction" / "prompts" / "prompt.txt").read_text(
+        encoding="utf8"
+    )
+    system_prompt = system_prompt.replace("{", "{{").replace("}", "}}")
+    llm = ChatOpenAI(
+        model=model,
+        base_url=os.getenv("base_url"),
+        api_key=os.getenv("OPENAI_API_KEY"),
+    )
+    prompt = ChatPromptTemplate.from_messages([
+        ("system", system_prompt),
+        ("user", "{rpc_json}"),
+    ])
+    return prompt | llm | JsonOutputParser()
+
+
+def scan_and_extract(chain_name: str, model: str) -> None:
+    spec_root = ROOT / "RPC_Specification" / chain_name
+    constraint_dir = ROOT / "ConstraintExtraction" / "constraints" / chain_name
+    negative_dir = ROOT / "ConstraintExtraction" / "assertions" / chain_name / "negative_rules"
+
+    if not spec_root.exists():
+        raise FileNotFoundError(f"RPC specification directory not found: {spec_root}")
+
+    llm_chain = build_chain(model)
+    for i, spec_file in enumerate(sorted(spec_root.rglob("*.json")), start=1):
         spec = read_spec(spec_file)
+        dual = llm_chain.invoke({"rpc_json": json.dumps(spec, indent=2, ensure_ascii=False)})
+        rel = spec_file.relative_to(spec_root)
+        write_json(constraint_dir / rel, dual["constraint_table"])
+        write_json(negative_dir / rel, dual["negative_rules"])
+        print(f"No.{i} [{chain_name}] {rel} -> constraints + negative_rules")
 
-        # One call → Two tables
-        dual = chain.invoke({"rpc_json": json.dumps(spec, indent=2)})
 
-        # constraint_table
-        rel = spec_file.relative_to(SPEC_ROOT)
-        write_json(CONSTRAINT_DIR / rel, dual["constraint_table"])
+def main() -> None:
+    parser = argparse.ArgumentParser(description="Extract RPCSpecter OSC/PDC/STC constraints.")
+    parser.add_argument("--chain", default=get_chain(), choices=["ethereum", "solana"])
+    parser.add_argument("--model", default=os.getenv("OPENAI_MODEL", "gpt-5.1"))
+    args = parser.parse_args()
+    scan_and_extract(args.chain, args.model)
 
-        # negative_rules
-        write_json(NEGATIVE_DIR / rel, dual["negative_rules"])
 
-        print(f"No.{i} [Dual] {rel} → constraint + negative_rules")
-
-        i = i + 1 
-
-# ---------- Entry ----------
 if __name__ == "__main__":
-    scan_and_extract()
+    main()

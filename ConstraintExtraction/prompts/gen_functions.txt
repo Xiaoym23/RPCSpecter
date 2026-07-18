@@ -1,97 +1,49 @@
-You are a Blockchain domain expert.
-OSC means On-chain State Constraints.
-SPC means Specific Process Constraints.
-For each OSC or SPC parameter in the input list:
+You are a Blockchain domain expert and RPCSpecter seed-support synthesizer.
+Input is a list of extracted OSC/PDC/STC constraints for one or more RPC parameters.
+Generate minimal executable artifacts that help construct at least one valid seed request and near-valid mutations.
 
-1. If constraint == "OSC":
-   - legal is a function that must return a value that **exists or will exist on-chain** (slot, blockhash, pubkey, etc.)
-   - illegal is a function that must return a value that **violates** the on-chain existence rule (out-of-range, fake, expired, negative, etc.)
+Constraint semantics:
+1. OSC (On-chain State Constraints)
+   - legal must return a value that exists or is currently valid on-chain, such as a live account, available slot, latest block number, fresh blockhash, or non-pruned block boundary.
+   - illegal must return a value that violates the on-chain state rule, such as an out-of-range slot, fake account, expired blockhash, pruned boundary, or non-existent object.
 
-2. If constraint == "SPC":
-    output **chain_variants**: legal_A, illegal_A, legal_B, illegal_B, …, legal_D, illegal_D:
-    - legal is a function that must return a value that is **correctly produced by the full chain of specific processes** (key-gen → sign → serialize → encode)
-    - illegal is a function that must return a value that **breaks at least one step** in the chain (fake key, unsigned, wrong encoding, expired hash, etc.)
-    - A, B, C, D are the **semantic steps** described in the reason field
-    - Each step must be a **runnable function** that can be chained together
-    - The final function (D) must consume the output of C and return the final parameter value
+2. PDC (Procedural Constraints)
+   - output chain_variants: ordered step keys A, B, C, D where appropriate.
+   - legal variants must construct the artifact through the required process, such as build -> sign -> serialize -> encode.
+   - illegal variants must break at least one step, such as fake key, unsigned message, malformed serialization, wrong encoding, expired hash, unsupported transaction version, or corrupted raw transaction.
+   - Each step must be a runnable function and must be chainable: each non-first step consumes the previous step output; the final step returns the parameter value.
 
-Local dev chain (127.0.0.1:8899) is the target environment.
-No comments, no error handling, only the function body.
+3. STC (Syntax Constraints)
+   - For enumerated domains, output value_pool with valid documented values and representative invalid values.
+   - For primitive boundaries, output boundary_pool with valid boundary values and invalid out-of-bound values.
+   - For cross-parameter compatibility, output dependency_rules describing invalid combinations.
 
-OSC Example:
-```
-{
-    "tools": [
-    {
-        "path": "object.minContextSlot",
-        "constraint": "OSC",
-        "imports": [
-            "requests",
-            "os"
-        ]
-        "legal": "def get_min_context_slot() -> int:\n    import os, requests\n    rpc = os.getenv(\"SOLANA_RPC\", \"http://127.0.0.1:8899\")\n    resp = requests.post(rpc, json={\"jsonrpc\": \"2.0\", \"id\": 1, \"method\": \"getSlot\"}, timeout=10)\n    return resp.json()[\"result\"]",
-        "illegal": "def illegal_minContextSlot():\n    return -1"
-    }
-    ]
-}
-```
-
-SPC Example:
-```
-{
-  "tools": [
-    {
-      "path": "transaction",
-      "constraint": "SPC",
-      "imports": ["requests", "solders.message", "solders.keypair", "solders.hash", "solders.transaction"],
-      "chain_process": {
-        "build_message": {
-          "legal": "def build_message_legal():\n    from solders.message import Message\n    from solders.hash import Hash\n    from solders.keypair import Keypair\n    from solders.system_program import TransferParams, transfer\n    ix = transfer(TransferParams(from_pubkey=Keypair().pubkey(), to_pubkey=Keypair().pubkey(), lamports=1_000_000))\n    return Message.new_with_blockhash([ix], Keypair().pubkey(), Hash.from_string(get_latest_blockhash()))",
-          "illegal": "def build_message_illegal():\n    from solders.message import Message\n    from solders.hash import Hash\n    return Message.new_with_blockhash([], Keypair().pubkey(), Hash.from_string('11111111111111111111111111111111'))  # expired blockhash"
-        },
-        "sign_message": {
-          "legal": "def sign_message_legal(msg):\n    from solders.keypair import Keypair\n    from solders.hash import Hash\n    keypair = Keypair()\n    msg.sign([keypair], Hash.from_string(get_latest_blockhash()))\n    return msg",
-          "illegal": "def sign_message_illegal(msg):\n    return msg  # unsigned → breaks wire format"
-        },
-        "serialize_message": {
-          "legal": "def serialize_message_legal(signed):\n    return bytes(signed)",
-          "illegal": "def serialize_message_illegal(signed):\n    return b'\\x00garbage'  # not a valid wire format"
-        }
-      }
-    }
-  ]
-}
-```
+Local development RPC endpoints are provided by environment variables ETH_RPC and SOLANA_RPC.
+No comments, no prose, no markdown. Output JSON only.
 
 Output JSON:
-For OSC:
-```
 {
   "tools": [
     {
       "path": "<full.dot.path>",
-      "constraint": "OSC|SPC",
-      "imports": ["requests", "solders.pubkey", ...],
+      "constraint": "OSC|PDC|STC",
+      "imports": ["requests", "os"],
       "legal": "def legal_<leaf_name>():\n    ...",
-      "illegal": "def illegal_<leaf_name>():\n    ..."
-    }
-  ]
-}
-```
-For SPC:
-```
-{
-  "tools": [
-    {
-      "path": "<full.dot.path>",
-      "constraint": "OSC|SPC",
-      "imports": ["requests", "solders.pubkey", ...],
-      "chain_variants": {   
+      "illegal": "def illegal_<leaf_name>():\n    ...",
+      "chain_variants": {
         "A": {"legal": "def A_legal():\n    ...", "illegal": "def A_illegal():\n    ..."},
-        "B": {"legal": "def B_legal():\n    ...", "illegal": "def B_illegal():\n    ..."},
-        ...
-      }
+        "B": {"legal": "def B_legal(x):\n    ...", "illegal": "def B_illegal(x):\n    ..."}
+      },
+      "value_pool": {
+        "legal": [],
+        "empty": [""],
+        "illegal": []
+      },
+      "boundary_pool": {
+        "legal": [],
+        "illegal": []
+      },
+      "dependency_rules": []
     }
   ]
 }
-```
